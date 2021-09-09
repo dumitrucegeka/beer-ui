@@ -1,0 +1,26 @@
+.beerDetailsContainer {
+    width: 80%;
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    border: 1px solid lightblue;
+}
+
+.beerDetailContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.beerDetailTitle {
+    min-width: max-content;
+    color: lightseagreen
+}
+
+.beerDetailValue {
+    color: rebeccapurple
+}

@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import BeerList from './screens/beer-list/BeerList';
+import { BEERS_MOCK } from './beers';
+import Search from './components/Search';
+import { ChangeEvent, useState } from 'react';
 
 function App() {
+  const [currentSearch, setCurrentSearch] = useState('');
+  
+  const handleSearch = (event: ChangeEvent) => {
+    const searchedValue = (event.target as HTMLInputElement).value
+    console.log({searchedValue})
+    
+    setCurrentSearch(searchedValue)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>$PLACEHOLDER</h1>
+
+      <Search selectedValue={currentSearch} onChange={handleSearch}></Search>
+      
+      <BeerList beers={BEERS_MOCK}></BeerList>
     </div>
   );
 }
