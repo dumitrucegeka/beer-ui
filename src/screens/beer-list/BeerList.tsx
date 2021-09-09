@@ -8,8 +8,8 @@ export interface BeerListProps {
 
 const BeerList = (props: BeerListProps) => {
     const { beerListContainer } = styles
-
     const { beers } = props;
+
     return (
         <div className={beerListContainer}>
             {beers?.map((beer, index) => (<BeerDetails key={index} {...beer}></BeerDetails>))}
