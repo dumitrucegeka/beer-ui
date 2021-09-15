@@ -18,20 +18,14 @@ const BeerList = () => {
   }
 
   useEffect(() => {
-    if (currentSearch) {
-      const requestConfig = { params: { beer_name: currentSearch } }
-      
-      axios.get('https://api.punkapi.com/v2/beers', requestConfig)
-        .then(result => result.data)
-        .then(result => setBeers(result))
-    }
+    const requestConfig = currentSearch 
+      ? { params: { beer_name: currentSearch } } 
+      : undefined
+    
+    axios.get('https://api.punkapi.com/v2/beers', requestConfig)
+      .then(result => result.data)
+      .then(result => setBeers(result))
   }, [currentSearch])
-
-  useEffect(() => {
-    axios.get('https://api.punkapi.com/v2/beers')
-      .then(res => res.data)
-      .then((result) => setBeers(result))
-  }, [])
 
   return (
     <div className="App">
