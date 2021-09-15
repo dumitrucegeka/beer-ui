@@ -10,18 +10,20 @@ const BeerDetails = (props: any, state: any) => {
   console.log(beer)
 
   return (
-        <div className={beerDetailsContainer}>
-            {Object.keys(beer).map((beerDetail, index) => {
-              if (typeof beer[beerDetail as keyof Beer] === 'object') {
-                return
-              }
+    <div className={beerDetailsContainer}>
+      {Object.keys(beer).map((beerDetail, index) => {
+        if (typeof beer[beerDetail as keyof Beer] === 'object') {
+          return
+        }
 
-              return <div key={index} className={beerDetailContainer}>
-                    <p className={beerDetailTitle}> {beerDetail} : </p>
-                    <p className={beerDetailValue}> {beer[beerDetail as keyof Beer]} </p>
-                </div>
-            })}
-        </div>
+        return (
+          <div key={index} className={beerDetailContainer}>
+            <p className={beerDetailTitle}> {beerDetail} : </p>
+            <p className={beerDetailValue}> {beer[beerDetail as keyof Beer]} </p>
+          </div>
+        )
+      })}
+    </div>
   )
 }
 

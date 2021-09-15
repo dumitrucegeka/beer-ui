@@ -14,18 +14,14 @@ const BeerList = () => {
 
   const handleSearch = (event: ChangeEvent) => {
     const searchedValue = (event.target as HTMLInputElement).value
-    console.log((event.nativeEvent.target as HTMLInputElement).value);
-    console.log({ searchedValue })
     setCurrentSearch(searchedValue)
   }
 
   useEffect(() => {
-    console.log({ currentSearch })
     if (currentSearch) {
       const requestConfig = { params: { beer_name: currentSearch } }
-      console.log({ requestConfig })
       
-        axios.get('https://api.punkapi.com/v2/beers', requestConfig)
+      axios.get('https://api.punkapi.com/v2/beers', requestConfig)
         .then(result => result.data)
         .then(result => setBeers(result))
     }
@@ -44,7 +40,7 @@ const BeerList = () => {
       <Search onChange={handleSearch}/>
     
       <div className={beerListContainer}>
-          {beers?.map((beer) => <BeerRow key={beer.id} {...beer}/>)}
+        {beers?.map((beer) => <BeerRow key={beer.id} {...beer}/>)}
       </div>
   </div>
 

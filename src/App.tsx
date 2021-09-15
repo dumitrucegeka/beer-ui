@@ -9,7 +9,6 @@ function App () {
     <Router>
       <Switch>
         <Route exact path="/">
-          queee
           {/* TODO - THIS SHOULD BE A LANDING PAGE */}
         </Route>
 
