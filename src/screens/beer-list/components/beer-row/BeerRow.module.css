@@ -1,0 +1,17 @@
+.card {
+    margin: 1rem 1rem 1rem 1rem;
+    /* width: max-content; */
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+}
+
+.beerImageStyle {
+    height: 20rem;
+    width: 10rem;
+}
+
+.beerNameStyle, .beerTaglineStyle {
+    width: 15rem;
+}

@@ -2,8 +2,12 @@ import { Beer } from '../../../../models/Beer.interface'
 import styles from './BeerDetails.module.css'
 import React from 'react';
 
-const BeerDetails = (beer: Beer) => {
+const BeerDetails = (props: any, state: any) => {
   const { beerDetailsContainer, beerDetailContainer, beerDetailTitle, beerDetailValue } = styles
+  
+  console.log(state)
+  const beer = {...props?.location?.state?.beer}
+  console.log(beer)
 
   return (
         <div className={beerDetailsContainer}>
