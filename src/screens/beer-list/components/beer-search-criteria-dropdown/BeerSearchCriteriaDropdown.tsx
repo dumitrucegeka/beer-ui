@@ -7,25 +7,21 @@ import {
   Select,
 } from '@material-ui/core'
 import styles from './BeerSearchCriteriaDropdown.module.css'
+import BeerSearchCriteria from '../../../../models/BeerSearchCriteria.enum'
 
-enum BeerSearchCriteria {
-  FOOD_PAIRING = 'FOOD PAIRING',
-  NAME = 'NAME',
-  NONE = 'NONE',
+export interface BeerSearchCriteriaProps {
+  searchCriteria: BeerSearchCriteria
+  selectionChangeHandler: (event: any) => void
 }
 
-const BeerSearchCriteriaDropdown = (props: any) => {
+const BeerSearchCriteriaDropdown = (props: BeerSearchCriteriaProps) => {
   const { selectStyle, formControl } = styles
-  const [selectedValue, setSelectedValue] = useState(BeerSearchCriteria.NONE)
   const searchCriterias: string[] = Object.values(BeerSearchCriteria)
-
-  const handleSelectionChange = useCallback((event: any) => {
-    setSelectedValue(event.target.value)
-  }, [])
+  const { searchCriteria, selectionChangeHandler } = props
 
   const hasError = useCallback(
-    () => !selectedValue || selectedValue === BeerSearchCriteria.NONE,
-    [selectedValue],
+    () => !searchCriteria || searchCriteria === BeerSearchCriteria.NONE,
+    [searchCriteria],
   )
 
   return (
@@ -35,12 +31,12 @@ const BeerSearchCriteriaDropdown = (props: any) => {
         className={selectStyle}
         labelId="demo-simple-select-error-label"
         id="demo-simple-select-error"
-        onChange={handleSelectionChange}
-        value={selectedValue}
+        onChange={selectionChangeHandler}
+        value={searchCriteria}
         // renderValue={(value) => `⚠️  - ${value}`}
       >
-        {searchCriterias.map((searchCriteria) => (
-          <MenuItem value={searchCriteria}>{searchCriteria}</MenuItem>
+        {searchCriterias.map((criteria: string) => (
+          <MenuItem value={criteria}>{criteria}</MenuItem>
         ))}
       </Select>
       {hasError() && <FormHelperText>Error</FormHelperText>}
