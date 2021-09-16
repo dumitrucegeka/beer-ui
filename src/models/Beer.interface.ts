@@ -1,4 +1,4 @@
-import { Measurement } from "./Measurement.interface";
+import { Measurement } from './Measurement.interface';
 
 export interface Beer {
     id: number;
