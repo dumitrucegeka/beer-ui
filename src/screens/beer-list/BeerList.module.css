@@ -3,3 +3,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20rem, max-content))
 }
+
+.searchContainerStyle {
+    gap: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+}

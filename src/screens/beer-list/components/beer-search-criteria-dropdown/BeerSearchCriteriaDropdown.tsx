@@ -1,33 +1,49 @@
-import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@material-ui/core';
-import React from 'react';
+import React, { useCallback, useState } from 'react'
+import {
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  MenuItem,
+  Select,
+} from '@material-ui/core'
+import styles from './BeerSearchCriteriaDropdown.module.css'
 
-import styles from './BeerSearchCriteriaDropdown.module.css';
+enum BeerSearchCriteria {
+  FOOD_PAIRING = 'FOOD PAIRING',
+  NAME = 'NAME',
+  NONE = 'NONE',
+}
 
 const BeerSearchCriteriaDropdown = (props: any) => {
-  console.log(props)
-  const { formControl } = styles
+  const { selectStyle, formControl } = styles
+  const [selectedValue, setSelectedValue] = useState(BeerSearchCriteria.NONE)
+  const searchCriterias: string[] = Object.values(BeerSearchCriteria)
 
-  const handleChange = (event: any) => {
-    console.log(event)
-  }
+  const handleSelectionChange = useCallback((event: any) => {
+    setSelectedValue(event.target.value)
+  }, [])
+
+  const hasError = useCallback(
+    () => !selectedValue || selectedValue === BeerSearchCriteria.NONE,
+    [selectedValue],
+  )
 
   return (
-    <FormControl className={formControl} error>
-      <InputLabel id="demo-simple-select-error-label">Name</InputLabel>
+    <FormControl className={formControl} error={hasError()}>
+      <InputLabel id="demo-simple-select-error-label">Search for </InputLabel>
       <Select
+        className={selectStyle}
         labelId="demo-simple-select-error-label"
         id="demo-simple-select-error"
-        onChange={handleChange}
+        onChange={handleSelectionChange}
+        value={selectedValue}
         // renderValue={(value) => `⚠️  - ${value}`}
       >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+        {searchCriterias.map((searchCriteria) => (
+          <MenuItem value={searchCriteria}>{searchCriteria}</MenuItem>
+        ))}
       </Select>
-      <FormHelperText>Error</FormHelperText>
+      {hasError() && <FormHelperText>Error</FormHelperText>}
     </FormControl>
   )
 }
