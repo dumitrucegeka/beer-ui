@@ -3,7 +3,7 @@ import React, { ChangeEvent, useCallback, useEffect, useState } from 'react'
 
 import Search from '../../components/Search'
 import { Beer } from '../../models/Beer.interface'
-import BeerSearchCriteria from '../../models/BeerSearchCriteria.enum'
+import { BeerSearchCriteria, BeerSearchFilter } from '../../models/BeerSearchCriteria.enum'
 import styles from './BeerList.module.css'
 import BeerRow from './components/beer-row/BeerRow'
 import BeerSearchCriteriaDropdown from './components/beer-search-criteria-dropdown/BeerSearchCriteriaDropdown'
@@ -13,20 +13,20 @@ const BeerList = () => {
 
   const [beers, setBeers] = useState<Beer[]>([])
   const [currentSearch, setCurrentSearch] = useState('')
-  const [searchCriteria, setSearchCriteria] = useState(BeerSearchCriteria.NONE)
+  const [searchCriteria, setSearchCriteria] = useState<BeerSearchCriteria>(BeerSearchCriteria.NONE)
 
   const handleSelectionChange = useCallback((event: any) => {
     setSearchCriteria(event.target.value)
-  }, [])
+  }, [searchCriteria])
 
-  const handleSearch = (event: ChangeEvent) => {
+  const handleSearch = useCallback((event: ChangeEvent) => {
     const searchedValue = (event.target as HTMLInputElement).value
     setCurrentSearch(searchedValue)
-  }
+  }, [currentSearch, searchCriteria])
 
   useEffect(() => {
     const requestConfig = currentSearch
-      ? { params: { beer_name: currentSearch } }
+      ? { params: { [BeerSearchFilter[searchCriteria]]: currentSearch } }
       : undefined
 
     axios

@@ -60,7 +60,8 @@ module.exports = {
     'react/jsx-indent': 'off',
     'react/jsx-indent-props': 'off',
     'react/destructuring-assignment': 'warn',
-
+    
+    '@typescript-eslint/naming-convention': 'warn',
     '@typescript-eslint/no-unsafe-assignment': 'warn',
     '@typescript-eslint/no-unsafe-member-access': 'warn',
     '@typescript-eslint/indent': 'off',

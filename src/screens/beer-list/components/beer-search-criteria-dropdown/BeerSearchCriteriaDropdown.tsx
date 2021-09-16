@@ -1,13 +1,8 @@
-import React, { useCallback, useState } from 'react'
-import {
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  MenuItem,
-  Select,
-} from '@material-ui/core'
+import React, { useCallback } from 'react'
+import { FormControl, InputLabel, Select, MenuItem, FormHelperText } from '@material-ui/core'
+
+import { BeerSearchCriteria } from '../../../../models/BeerSearchCriteria.enum'
 import styles from './BeerSearchCriteriaDropdown.module.css'
-import BeerSearchCriteria from '../../../../models/BeerSearchCriteria.enum'
 
 export interface BeerSearchCriteriaProps {
   searchCriteria: BeerSearchCriteria
@@ -16,7 +11,6 @@ export interface BeerSearchCriteriaProps {
 
 const BeerSearchCriteriaDropdown = (props: BeerSearchCriteriaProps) => {
   const { selectStyle, formControl } = styles
-  const searchCriterias: string[] = Object.values(BeerSearchCriteria)
   const { searchCriteria, selectionChangeHandler } = props
 
   const hasError = useCallback(
@@ -25,18 +19,19 @@ const BeerSearchCriteriaDropdown = (props: BeerSearchCriteriaProps) => {
   )
 
   return (
-    <FormControl className={formControl} error={hasError()}>
+    <FormControl variant="standard" className={formControl} error={hasError()}>
       <InputLabel id="demo-simple-select-error-label">Search for </InputLabel>
       <Select
+        variant="standard"
         className={selectStyle}
         labelId="demo-simple-select-error-label"
         id="demo-simple-select-error"
         onChange={selectionChangeHandler}
         value={searchCriteria}
-        // renderValue={(value) => `⚠️  - ${value}`}
+      // renderValue={(value) => `⚠️  - ${value}`}
       >
-        {searchCriterias.map((criteria: string) => (
-          <MenuItem value={criteria}>{criteria}</MenuItem>
+        {Object.values(BeerSearchCriteria).map((criteria: string) => (
+          <MenuItem key={criteria} value={criteria}>{criteria}</MenuItem>
         ))}
       </Select>
       {hasError() && <FormHelperText>Error</FormHelperText>}
