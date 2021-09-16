@@ -1,24 +1,100 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    node: true,
   },
   extends: [
     'eslint:recommended',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'airbnb',
+    'airbnb-typescript',
+    'airbnb/hooks',
+    'plugin:@typescript-eslint/eslint-recommended',
+    // 'prettier',
+    // 'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
+  // overrides: [
+  //   {
+  //     files: ['*.ts', '*.tsx'], // Your TypeScript files extension
+  //     parser: '@typescript-eslint/parser',
+  //     parserOptions: {
+  //       ecmaFeatures: {
+  //         experimentalObjectRestSpread: true,
+  //         jsx: true,
+  //       },
+  //       ecmaVersion: 12,
+  //       sourceType: 'module',
+  //       project: ['./tsconfig.json'], // Specify it only for TypeScript files
+  //     },
+  //   },
+  // ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      experimentalObjectRestSpread: true,
+      jsx: true,
     },
-    ecmaVersion: 12,
-    sourceType: 'module'
+    ecmaVersion: 2018,
+    createDefaultProgram: true,
+    sourceType: 'module',
+    project: 'tsconfig.json', // Specify it only for TypeScript files
   },
-  plugins: [
-    'react',
-    '@typescript-eslint'
-  ],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
-  }
+    'react/jsx-props-no-spreading': [
+      'warn',
+      {
+        html: 'ignore',
+      },
+    ],
+    // "react/jsx-no-undef": "off",
+    'react-hooks/rules-of-hooks': 'error',
+    'react/jsx-indent': 'off',
+    'react/jsx-indent-props': 'off',
+    'react/destructuring-assignment': 'warn',
+
+    '@typescript-eslint/no-unsafe-assignment': 'warn',
+    '@typescript-eslint/no-unsafe-member-access': 'warn',
+    '@typescript-eslint/indent': 'off',
+    '@typescript-eslint/jsx-indent-props': 'off',
+    '@typescript-eslint/no-floating-promises': 'warn',
+    '@typescript-eslint/no-unsafe-return': 'warn',
+    '@typescript-eslint/semi': 'off',
+
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      // {
+      //   "additionalHooks": "{customHook|customHook2|..}"
+      // }
+    ],
+    'linebreak-style': 'off',
+    'object-curly-newline': 'off',
+    'object-curly-spacing': ['warn', 'always'],
+    quotes: ['warn', 'single'],
+    // "import/extensions": [
+    //   "error",
+    //   "always",
+    //   {
+    //     "js": "never",
+    //     "jsx": "never",
+    //     "ts": "never",
+    //     "tsx": "never"
+    //   }
+    // ],
+    'no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        args: 'none',
+      },
+    ],
+  },
 }

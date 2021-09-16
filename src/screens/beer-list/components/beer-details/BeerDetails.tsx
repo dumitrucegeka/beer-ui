@@ -1,12 +1,13 @@
-import { Beer } from '../../../../models/Beer.interface'
-import styles from './BeerDetails.module.css'
 import React from 'react';
 
-const BeerDetails = (props: any, state: any) => {
+import { Beer } from '../../../../models/Beer.interface';
+import styles from './BeerDetails.module.css';
+
+const BeerDetails = (props: any) => {
   const { beerDetailsContainer, beerDetailContainer, beerDetailTitle, beerDetailValue } = styles
-  
-  console.log(state)
-  const beer = {...props?.location?.state?.beer}
+  console.log(props)
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  const beer = { ...props?.location?.state?.beer } as Beer
   console.log(beer)
 
   return (
@@ -16,15 +17,19 @@ const BeerDetails = (props: any, state: any) => {
           return
         }
 
+        // eslint-disable-next-line consistent-return
         return (
-          <div key={index} className={beerDetailContainer}>
-            <p className={beerDetailTitle}> {beerDetail} : </p>
-            <p className={beerDetailValue}> {beer[beerDetail as keyof Beer]} </p>
+          <div key={`${index.toString() + beer?.name}`} className={beerDetailContainer}>
+            <p className={beerDetailTitle}>
+              {beerDetail}
+            </p>
+            <p className={beerDetailValue}>
+              {beer[beerDetail as keyof Beer]}
+            </p>
           </div>
         )
       })}
     </div>
   )
 }
-
 export default BeerDetails
