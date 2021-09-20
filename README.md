@@ -1,4 +1,4 @@
-#About the app
+# About the app
 
 A simple React app which allows you to search and view details about craft beers provided by a free external api: https://api.punkapi.com/v2/
 
