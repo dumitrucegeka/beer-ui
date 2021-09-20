@@ -7,10 +7,7 @@ import BeerDetails from './screens/beer-list/components/beer-details/BeerDetails
 const App = () => (
   <Router>
     <Switch>
-      <Route exact path="/">
-        {/* TODO - THIS SHOULD BE A LANDING PAGE */}
-      </Route>
-
+      <Route exact path="/" component={BeerList} />
       <Route exact path="/beers" component={BeerList} />
       <Route path="/beers/:id" component={BeerDetails} />
     </Switch>

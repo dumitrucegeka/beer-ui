@@ -19,13 +19,8 @@ const BeerSearchCriteriaDropdown = (props: BeerSearchCriteriaProps) => {
   const searchCriterias: string[] = Object.values(BeerSearchCriteria)
   const { searchCriteria, selectionChangeHandler } = props
 
-  const hasError = useCallback(
-    () => !searchCriteria || searchCriteria === BeerSearchCriteria.NONE,
-    [searchCriteria],
-  )
-
   return (
-    <FormControl className={formControl} error={hasError()}>
+    <FormControl className={formControl}>
       <InputLabel id="demo-simple-select-error-label">Search for </InputLabel>
       <Select
         className={selectStyle}
@@ -33,13 +28,11 @@ const BeerSearchCriteriaDropdown = (props: BeerSearchCriteriaProps) => {
         id="demo-simple-select-error"
         onChange={selectionChangeHandler}
         value={searchCriteria}
-        // renderValue={(value) => `⚠️  - ${value}`}
       >
         {searchCriterias.map((criteria: string) => (
-          <MenuItem value={criteria}>{criteria}</MenuItem>
+          <MenuItem value={criteria} key={criteria}>{criteria}</MenuItem>
         ))}
       </Select>
-      {hasError() && <FormHelperText>Error</FormHelperText>}
     </FormControl>
   )
 }

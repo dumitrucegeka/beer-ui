@@ -1,16 +1,14 @@
 .beerDetailsContainer {
     width: 80%;
-    margin: 5% auto;
+    margin: 1% auto;
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: start; */
     border: 1px solid lightblue;
 }
 
 .beerDetailContainer {
     width: 80%;
-    margin: 5% auto;
+    margin: 1% auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -19,7 +17,8 @@
 
 .beerDetailTitle {
     min-width: max-content;
-    color: lightseagreen
+    color: lightseagreen;
+    margin-right: 20%;
 }
 
 .beerDetailValue {

@@ -9,11 +9,12 @@ import BeerRow from './components/beer-row/BeerRow'
 import BeerSearchCriteriaDropdown from './components/beer-search-criteria-dropdown/BeerSearchCriteriaDropdown'
 
 const BeerList = () => {
+  const apiUrl = 'https://api.punkapi.com/v2';
   const { beerListContainer, searchContainerStyle } = styles
 
   const [beers, setBeers] = useState<Beer[]>([])
   const [currentSearch, setCurrentSearch] = useState('')
-  const [searchCriteria, setSearchCriteria] = useState(BeerSearchCriteria.NONE)
+  const [searchCriteria, setSearchCriteria] = useState(BeerSearchCriteria.NAME)
 
   const handleSelectionChange = useCallback((event: any) => {
     setSearchCriteria(event.target.value)
@@ -30,14 +31,14 @@ const BeerList = () => {
       : undefined
 
     axios
-      .get('https://api.punkapi.com/v2/beers', requestConfig)
+      .get(`${apiUrl}/beers`, requestConfig)
       .then((result) => result.data)
       .then((result) => setBeers(result))
   }, [currentSearch])
 
   return (
     <div className="App">
-      <h1>$PLACEHOLDER</h1>
+      <h1>Explore the finest beers!</h1>
 
       <div className={searchContainerStyle}>
         <Search onChange={handleSearch} />

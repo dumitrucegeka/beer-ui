@@ -1,7 +1,6 @@
 enum BeerSearchCriteria {
-  FOOD_PAIRING = 'FOOD PAIRING',
-  NAME = 'NAME',
-  NONE = 'NONE',
+  FOOD_PAIRING = 'Food Pairing',
+  NAME = 'Name',
 }
 
 export default BeerSearchCriteria
