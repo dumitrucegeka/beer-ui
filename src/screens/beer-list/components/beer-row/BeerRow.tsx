@@ -8,10 +8,8 @@ import styles from './BeerRow.module.css'
 import { Beer } from '../../../../models/Beer.interface'
 
 const BeerRow = (beer: Beer) => {
-  const history = useHistory();
-
   const { cardStyle, beerImageStyle, beerNameStyle, beerTaglineStyle } = styles
-  const { name, tagline, image_url } = beer
+  const history = useHistory();
 
   const clickHandler = useCallback(() => {
     history.push(`/beers/${beer.id}`, { beer })
@@ -23,19 +21,19 @@ const BeerRow = (beer: Beer) => {
         <CardActionArea>
           <CardContent>
             <Typography className={beerNameStyle} variant="body2" color="textSecondary" component="p">
-              {name}
+              {beer.name}
             </Typography>
 
             <Typography className={beerTaglineStyle} variant="body2" color="textSecondary" component="p">
-              {tagline}
+              {beer.tagline}
             </Typography>
 
             <CardMedia
               className={beerImageStyle}
               component="img"
-              alt={name}
-              image={image_url}
-              title={name}
+              alt={beer.name}
+              image={beer.image_url}
+              title={beer.name}
               onClick={clickHandler}
             />
           </CardContent>

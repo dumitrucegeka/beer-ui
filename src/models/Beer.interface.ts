@@ -17,8 +17,8 @@ export interface Beer {
     attenuation_level: number;
     volume: Measurement;
     boil_volume: Measurement;
-    method: any;
-    ingredients: any;
+    method: string;
+    ingredients: string;
     food_pairing: string[];
     brewers_tips: string;
     contributed_by: string;
