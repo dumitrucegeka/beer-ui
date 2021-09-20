@@ -25,16 +25,27 @@ const BeerList = () => {
     setCurrentSearch(searchedValue)
   }
 
+  const getSearchParams = (searchString: string, searchCriteriaValue: BeerSearchCriteria) => {
+    switch (searchCriteriaValue) {
+      case BeerSearchCriteria.NAME:
+        return { beer_name: searchString }
+      case BeerSearchCriteria.FOOD_PAIRING:
+        return { food: searchString.split(' ').join('_') }
+      default:
+        return null
+    }
+  }
+
   useEffect(() => {
     const requestConfig = currentSearch
-      ? { params: { beer_name: currentSearch } }
+      ? { params: getSearchParams(currentSearch, searchCriteria) }
       : undefined
 
     axios
       .get(`${apiUrl}/beers`, requestConfig)
       .then((result) => result.data)
       .then((result) => setBeers(result))
-  }, [currentSearch])
+  }, [currentSearch, searchCriteria])
 
   return (
     <div className="App">

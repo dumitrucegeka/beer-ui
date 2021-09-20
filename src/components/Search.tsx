@@ -8,7 +8,7 @@ export interface SearchProps {
 
 const Search = (props: SearchProps) => {
   const { onChange } = props
-  const changeHandler = useMemo(() => debounce(onChange, 1000), [onChange])
+  const changeHandler = useMemo(() => debounce(onChange, 500), [onChange])
 
   return (<input onChange={changeHandler} />)
 }

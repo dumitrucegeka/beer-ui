@@ -1,6 +1,8 @@
 #About the app
 A simple React app which allows you to search and view details about craft beers provided by a free external api: https://api.punkapi.com/v2/
 The goal of the app is to showcase a simple end to end application written in React with typescript and material ui components.
+The app allows to search by two predefined search criteria: name and food pairing at the moment.
+Changing the value of the Search criteria dropdown will change the params with which the api is called.
 For api interactions axios was used.
 Components from Material UI were imported and used.
 Feel free to explore some of the world's finest craft beers and why not, try them
