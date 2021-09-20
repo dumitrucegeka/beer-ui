@@ -1,4 +1,4 @@
 export interface Measurement {
-    "value": number;
-    "unit": string; // Should be from enum
+    value: number;
+    unit: string; // TODO - Should be from enum
 }
