@@ -5,11 +5,11 @@ import BeerList from './screens/beer-list/BeerList';
 import BeerDetails from './screens/beer-list/components/beer-details/BeerDetails';
 
 const App = () => (
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route exact path="/" component={BeerList} />
       <Route exact path="/beers" component={BeerList} />
-      <Route path="/beers/:id" component={BeerDetails} />
+      <Route exact path="/beers/:id" component={BeerDetails} />
     </Switch>
   </Router>
 );
