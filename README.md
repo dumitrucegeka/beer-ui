@@ -1,6 +1,7 @@
 # About the app
 
 A simple React app which allows you to search and view details about craft beers provided by a free external api: https://api.punkapi.com/v2/
+Application was deployed at https://dumitrucegeka.github.io/beer-ui/ using gh-pages.
 
 The goal of the app is to showcase a simple end to end application written in React with typescript and material ui components.
 
