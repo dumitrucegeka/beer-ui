@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/beer-ui/static/css/main.74569efb.chunk.css",
-    "main.js": "/beer-ui/static/js/main.3c5e6b39.chunk.js",
-    "main.js.map": "/beer-ui/static/js/main.3c5e6b39.chunk.js.map",
-    "runtime-main.js": "/beer-ui/static/js/runtime-main.81751c5f.js",
-    "runtime-main.js.map": "/beer-ui/static/js/runtime-main.81751c5f.js.map",
-    "static/js/2.5f295ff4.chunk.js": "/beer-ui/static/js/2.5f295ff4.chunk.js",
-    "static/js/2.5f295ff4.chunk.js.map": "/beer-ui/static/js/2.5f295ff4.chunk.js.map",
-    "static/js/3.6c74d87b.chunk.js": "/beer-ui/static/js/3.6c74d87b.chunk.js",
-    "static/js/3.6c74d87b.chunk.js.map": "/beer-ui/static/js/3.6c74d87b.chunk.js.map",
+    "main.css": "/beer-ui/static/css/main.9cbe521b.chunk.css",
+    "main.js": "/beer-ui/static/js/main.37ce18a1.chunk.js",
+    "main.js.map": "/beer-ui/static/js/main.37ce18a1.chunk.js.map",
+    "runtime-main.js": "/beer-ui/static/js/runtime-main.2e58914f.js",
+    "runtime-main.js.map": "/beer-ui/static/js/runtime-main.2e58914f.js.map",
+    "static/js/2.ac8e12b4.chunk.js": "/beer-ui/static/js/2.ac8e12b4.chunk.js",
+    "static/js/2.ac8e12b4.chunk.js.map": "/beer-ui/static/js/2.ac8e12b4.chunk.js.map",
+    "static/js/3.cad281f3.chunk.js": "/beer-ui/static/js/3.cad281f3.chunk.js",
+    "static/js/3.cad281f3.chunk.js.map": "/beer-ui/static/js/3.cad281f3.chunk.js.map",
     "index.html": "/beer-ui/index.html",
-    "static/css/main.74569efb.chunk.css.map": "/beer-ui/static/css/main.74569efb.chunk.css.map",
-    "static/js/2.5f295ff4.chunk.js.LICENSE.txt": "/beer-ui/static/js/2.5f295ff4.chunk.js.LICENSE.txt"
+    "static/css/main.9cbe521b.chunk.css.map": "/beer-ui/static/css/main.9cbe521b.chunk.css.map",
+    "static/js/2.ac8e12b4.chunk.js.LICENSE.txt": "/beer-ui/static/js/2.ac8e12b4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.81751c5f.js",
-    "static/js/2.5f295ff4.chunk.js",
-    "static/css/main.74569efb.chunk.css",
-    "static/js/main.3c5e6b39.chunk.js"
+    "static/js/runtime-main.2e58914f.js",
+    "static/js/2.ac8e12b4.chunk.js",
+    "static/css/main.9cbe521b.chunk.css",
+    "static/js/main.37ce18a1.chunk.js"
   ]
 }
