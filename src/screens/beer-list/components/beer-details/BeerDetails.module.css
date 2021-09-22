@@ -1,26 +1,32 @@
 .beerDetailsContainer {
-    width: 80%;
-    margin: 1% auto;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid lightblue;
+  width: 80%;
+  margin: 1% auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightblue;
+}
+
+.imageStyle {
+  height: 500px;
+  width: 200px;
+  margin: 0 auto;
 }
 
 .beerDetailContainer {
-    width: 80%;
-    margin: 1% auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  width: 80%;
+  margin: 1% auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .beerDetailTitle {
-    min-width: max-content;
-    color: lightseagreen;
-    margin-right: 20%;
+  min-width: max-content;
+  color: lightseagreen;
+  margin-right: 20%;
 }
 
 .beerDetailValue {
-    color: rebeccapurple
+  color: rebeccapurple;
 }

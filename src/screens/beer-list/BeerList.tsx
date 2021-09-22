@@ -61,7 +61,7 @@ const BeerList = () => {
 
       <div className={beerListContainer}>
         {beers?.map((beer) => (
-          <BeerRow key={beer.id} {...beer} />
+          <BeerRow key={beer.id} beer={beer} />
         ))}
       </div>
     </div>
