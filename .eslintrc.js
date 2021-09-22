@@ -69,12 +69,14 @@ module.exports = {
     '@typescript-eslint/no-unsafe-return': 'warn',
     '@typescript-eslint/consistent-return': 'off',
     '@typescript-eslint/semi': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     'react-hooks/exhaustive-deps': [
       'warn',
       // {
       //   "additionalHooks": "{customHook|customHook2|..}"
       // }
     ],
+    'consistent-return': 'warn',
     'linebreak-style': 'off',
     'object-curly-newline': 'off',
     'object-curly-spacing': ['warn', 'always'],

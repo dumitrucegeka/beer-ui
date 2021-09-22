@@ -3,4 +3,4 @@ enum BeerSearchCriteria {
   NAME = 'Name',
 }
 
-export default BeerSearchCriteria
+export default BeerSearchCriteria;
