@@ -1,15 +1,22 @@
 .cardStyle {
-    margin: 1rem 1rem 1rem 1rem;  /* TODO - should be set via a gap in grid in container */
+  margin: 1rem 1rem 1rem 1rem; /* TODO - should be set via a gap in grid in container */
+}
+
+.cardContentStyle {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.cardActionsStyle {
+  justify-content: center;
+  align-items: center;
 }
 
 img.beerImageStyle {
-    height: 20rem;
-    width: 10rem;
-    object-fit: contain;
-    margin: auto;
-}
-
-.beerNameStyle, .beerTaglineStyle {
-    width: 15rem;
-    font-weight: bold;
+  height: 20rem;
+  width: 10rem;
+  object-fit: contain;
+  margin: auto;
 }

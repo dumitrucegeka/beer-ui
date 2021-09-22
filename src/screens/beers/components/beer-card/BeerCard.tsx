@@ -17,7 +17,14 @@ interface BeerCardProps {
 }
 
 const BeerCard = (props: BeerCardProps) => {
-  const { cardStyle, beerImageStyle, beerNameStyle, beerTaglineStyle } = styles
+  const {
+    cardStyle,
+    cardContentStyle,
+    cardActionsStyle,
+    beerImageStyle,
+    beerNameStyle,
+    beerTaglineStyle,
+  } = styles
   const history = useHistory()
   const { beer } = props
 
@@ -27,23 +34,24 @@ const BeerCard = (props: BeerCardProps) => {
 
   return (
     <>
-      <Card className={cardStyle}>
-        <CardActionArea>
+      <Card variant="outlined" className={cardStyle}>
+        <CardActionArea className={cardContentStyle}>
           <CardContent>
             <Typography
               className={beerNameStyle}
-              variant="body2"
+              variant="h6"
               color="textPrimary"
-              component="p"
+              gutterBottom
             >
               {beer.name}
             </Typography>
 
             <Typography
               className={beerTaglineStyle}
-              variant="body2"
+              variant="caption"
               color="textSecondary"
-              component="p"
+              display="block"
+              gutterBottom
             >
               {beer.tagline}
             </Typography>
@@ -58,8 +66,9 @@ const BeerCard = (props: BeerCardProps) => {
             />
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button onClick={clickHandler}>
+
+        <CardActions className={cardActionsStyle}>
+          <Button color="primary" variant="outlined" onClick={clickHandler}>
             <Typography>See Details</Typography>
           </Button>
         </CardActions>
