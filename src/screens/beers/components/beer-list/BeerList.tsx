@@ -1,7 +1,7 @@
 import React from 'react'
 import { Beer } from '../../../../models/Beer.interface'
-import BeerRow from '../beer-row/BeerRow'
 import styles from './BeerList.module.css'
+import BeerCard from '../beer-card/BeerCard';
 
 const BeerList = (props: { beers: Beer[] }) => {
   const { beers } = props
@@ -10,7 +10,7 @@ const BeerList = (props: { beers: Beer[] }) => {
   return (
     <div className={beerListContainerStyle}>
       {beers?.map((beer) => (
-        <BeerRow key={beer.id} beer={beer} />
+        <BeerCard key={beer.id} beer={beer} />
       ))}
     </div>
   )

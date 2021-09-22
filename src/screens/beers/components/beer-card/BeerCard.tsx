@@ -9,14 +9,14 @@ import {
   CardActions,
   CardMedia,
 } from '@material-ui/core'
-import styles from './BeerRow.module.css'
+import styles from './BeerCard.module.css'
 import { Beer } from '../../../../models/Beer.interface'
 
-interface BeerRowProps {
+interface BeerCardProps {
   beer: Beer
 }
 
-const BeerRow = (props: BeerRowProps) => {
+const BeerCard = (props: BeerCardProps) => {
   const { cardStyle, beerImageStyle, beerNameStyle, beerTaglineStyle } = styles
   const history = useHistory()
   const { beer } = props
@@ -68,4 +68,4 @@ const BeerRow = (props: BeerRowProps) => {
   )
 }
 
-export default BeerRow
+export default BeerCard
