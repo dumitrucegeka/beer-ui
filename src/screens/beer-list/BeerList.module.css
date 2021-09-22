@@ -1,5 +1,5 @@
 .beerListContainer {
-    margin: 5% auto;
+    margin: 5% 5% 12%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20rem, max-content))
 }

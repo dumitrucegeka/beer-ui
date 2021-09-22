@@ -2,11 +2,14 @@
     margin: 1rem 1rem 1rem 1rem;  /* TODO - should be set via a gap in grid in container */
 }
 
-.beerImageStyle {
+img.beerImageStyle {
     height: 20rem;
     width: 10rem;
+    object-fit: contain;
+    margin: auto;
 }
 
 .beerNameStyle, .beerTaglineStyle {
     width: 15rem;
+    font-weight: bold;
 }
