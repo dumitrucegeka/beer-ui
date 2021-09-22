@@ -1,13 +1,14 @@
 .beerListContainer {
-    margin: 5% 5% 12%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, max-content))
+  margin: 5% 12% 5% 12%;
+  display: grid;
+  max-width: 100vw;
+  grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
 }
 
 .searchContainerStyle {
-    gap: 2rem;
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: center;
+  gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
 }

@@ -1,15 +1,25 @@
-import React, { Fragment, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
-import { Button, CardActionArea, CardActions, CardMedia } from '@material-ui/core'
+import {
+  Button,
+  CardActionArea,
+  CardActions,
+  CardMedia,
+} from '@material-ui/core'
 import styles from './BeerRow.module.css'
 import { Beer } from '../../../../models/Beer.interface'
 
-const BeerRow = (beer: Beer) => {
+interface BeerRowProps {
+  beer: Beer
+}
+
+const BeerRow = (props: BeerRowProps) => {
   const { cardStyle, beerImageStyle, beerNameStyle, beerTaglineStyle } = styles
-  const history = useHistory();
+  const history = useHistory()
+  const { beer } = props
 
   const clickHandler = useCallback(() => {
     history.push(`/beers/${beer.id}`, { beer })
@@ -20,11 +30,21 @@ const BeerRow = (beer: Beer) => {
       <Card className={cardStyle}>
         <CardActionArea>
           <CardContent>
-            <Typography className={beerNameStyle} variant="body2" color="textPrimary" component="p">
+            <Typography
+              className={beerNameStyle}
+              variant="body2"
+              color="textPrimary"
+              component="p"
+            >
               {beer.name}
             </Typography>
 
-            <Typography className={beerTaglineStyle} variant="body2" color="textSecondary" component="p">
+            <Typography
+              className={beerTaglineStyle}
+              variant="body2"
+              color="textSecondary"
+              component="p"
+            >
               {beer.tagline}
             </Typography>
 
@@ -37,7 +57,6 @@ const BeerRow = (beer: Beer) => {
               onClick={clickHandler}
             />
           </CardContent>
-
         </CardActionArea>
         <CardActions>
           <Button onClick={clickHandler}>

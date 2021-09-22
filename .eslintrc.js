@@ -75,6 +75,7 @@ module.exports = {
       //   "additionalHooks": "{customHook|customHook2|..}"
       // }
     ],
+    'consistent-return': 'warn',
     'linebreak-style': 'off',
     'object-curly-newline': 'off',
     'object-curly-spacing': ['warn', 'always'],
