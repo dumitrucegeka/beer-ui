@@ -1,8 +1,8 @@
+import React from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import React from 'react';
-import BeerList from './screens/beer-list/BeerList';
-import BeerDetails from './screens/beer-list/components/beer-details/BeerDetails';
+import BeerList from './screens/beers/Beers';
+import BeerDetails from './screens/beers/components/beer-details/BeerDetails';
 
 const App = () => (
   <Router basename={process.env.PUBLIC_URL}>
