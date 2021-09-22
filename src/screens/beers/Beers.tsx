@@ -1,15 +1,15 @@
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { FormControlLabel, Switch } from '@material-ui/core'
 import axios from 'axios'
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import Search from '../../components/Search'
 import { Beer } from '../../models/Beer.interface'
 import BeerSearchCriteria from '../../models/BeerSearchCriteria.enum'
 import styles from './Beers.module.css'
-import BeerRow from './components/beer-row/BeerRow'
+import BeerList from './components/beer-list/BeerList'
 import BeerSearchCriteriaDropdown from './components/beer-search-criteria-dropdown/BeerSearchCriteriaDropdown'
 import BeersGrid from './components/beers-grid/BeersGrid'
 
-const BeerList = () => {
+const Beers = () => {
   const apiUrl = 'https://api.punkapi.com/v2'
   const { beerListContainer, searchContainerStyle } = styles
 
@@ -80,17 +80,9 @@ const BeerList = () => {
         />
       </div>
 
-      {isGridView ? (
-        <BeersGrid beers={beers} />
-      ) : (
-        <div className={beerListContainer}>
-          {beers?.map((beer) => (
-            <BeerRow key={beer.id} beer={beer} />
-          ))}
-        </div>
-      )}
+      {isGridView ? <BeersGrid beers={beers} /> : <BeerList beers={beers} />}
     </div>
   )
 }
 
-export default BeerList
+export default Beers
