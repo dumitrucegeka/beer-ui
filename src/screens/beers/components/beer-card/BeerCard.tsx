@@ -9,15 +9,22 @@ import {
   CardActions,
   CardMedia,
 } from '@material-ui/core'
-import styles from './BeerRow.module.css'
+import styles from './BeerCard.module.css'
 import { Beer } from '../../../../models/Beer.interface'
 
-interface BeerRowProps {
+interface BeerCardProps {
   beer: Beer
 }
 
-const BeerRow = (props: BeerRowProps) => {
-  const { cardStyle, beerImageStyle, beerNameStyle, beerTaglineStyle } = styles
+const BeerCard = (props: BeerCardProps) => {
+  const {
+    cardStyle,
+    cardContentStyle,
+    cardActionsStyle,
+    beerImageStyle,
+    beerNameStyle,
+    beerTaglineStyle,
+  } = styles
   const history = useHistory()
   const { beer } = props
 
@@ -27,23 +34,24 @@ const BeerRow = (props: BeerRowProps) => {
 
   return (
     <>
-      <Card className={cardStyle}>
-        <CardActionArea>
+      <Card variant="outlined" className={cardStyle}>
+        <CardActionArea className={cardContentStyle}>
           <CardContent>
             <Typography
               className={beerNameStyle}
-              variant="body2"
+              variant="h6"
               color="textPrimary"
-              component="p"
+              gutterBottom
             >
               {beer.name}
             </Typography>
 
             <Typography
               className={beerTaglineStyle}
-              variant="body2"
+              variant="caption"
               color="textSecondary"
-              component="p"
+              display="block"
+              gutterBottom
             >
               {beer.tagline}
             </Typography>
@@ -58,8 +66,9 @@ const BeerRow = (props: BeerRowProps) => {
             />
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button onClick={clickHandler}>
+
+        <CardActions className={cardActionsStyle}>
+          <Button color="primary" variant="outlined" onClick={clickHandler}>
             <Typography>See Details</Typography>
           </Button>
         </CardActions>
@@ -68,4 +77,4 @@ const BeerRow = (props: BeerRowProps) => {
   )
 }
 
-export default BeerRow
+export default BeerCard
