@@ -30,10 +30,10 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "lint": "eslint 'src/**/*.tsx'",
+    "lint": "eslint \"src/**/*.tsx\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "format": "prettier --config ./.prettierrc --write \"src/**/*.ts\""
+    "format": "prettier --config ./.prettierrc --write \"src/**/*.tsx\""
   },
   "browserslist": {
     "production": [
