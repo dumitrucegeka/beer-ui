@@ -49,6 +49,12 @@ module.exports = {
     },
   },
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        'endOfLine': 'auto',
+      }
+    ],
     'react/jsx-props-no-spreading': [
       'warn',
       {
