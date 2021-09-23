@@ -52,8 +52,8 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        'endOfLine': 'auto',
-      }
+        endOfLine: 'auto',
+      },
     ],
     'react/jsx-props-no-spreading': [
       'warn',
