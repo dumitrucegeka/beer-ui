@@ -96,6 +96,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+// TODO - I shall be renamed to ShellComponent | Dashboard | Root or any other better name
 const Sidemenu = () => {
   const classes = useStyles();
   const theme = useTheme();
@@ -186,6 +187,8 @@ const Sidemenu = () => {
           <Divider />
 
           <DisplayTypeSwitch />
+
+          <Divider />
 
           <FormControlLabel
             control={<Switch checked={darkState} onChange={handleThemeChange} color='primary' inputProps={{ 'aria-label': 'checkbox with default color' }} />}
