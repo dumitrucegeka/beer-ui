@@ -1,0 +1,8 @@
+.searchContainerStyle {
+  gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
