@@ -7,9 +7,9 @@ import Beers from './screens/beers/Beers';
 const App = () => (
   <Router basename={process.env.PUBLIC_URL}>
     <Switch>
-      <Route exact path="/" component={Beers} />
-      <Route exact path="/beers" component={Beers} />
-      <Route exact path="/beers/:id" component={BeerDetails} />
+      <Route exact path='/' component={Beers} />
+      <Route exact path='/beers' component={Beers} />
+      <Route exact path='/beers/:id' component={BeerDetails} />
     </Switch>
   </Router>
 );

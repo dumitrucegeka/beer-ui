@@ -32,7 +32,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.tsx'",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "format": "prettier --config ./.prettierrc --write \"src/**/*.ts\""
   },
   "browserslist": {
     "production": [

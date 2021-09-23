@@ -1,15 +1,15 @@
-import React from 'react'
-import { DataGrid, GridColDef } from '@mui/x-data-grid'
+import React from 'react';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 interface UseDataGridProps {
-  rows: any[]
-  columns: GridColDef[]
+  rows: any[];
+  columns: GridColDef[];
   classes: string;
-  rowsPerPageOptions: number[]
+  rowsPerPageOptions: number[];
 }
 
 const useDataGrid = (props: UseDataGridProps) => {
-  const { rows, columns, classes, rowsPerPageOptions } = props
+  const { rows, columns, classes, rowsPerPageOptions } = props;
 
   const dataGrid = (
     <DataGrid
@@ -29,9 +29,9 @@ const useDataGrid = (props: UseDataGridProps) => {
       checkboxSelection
       disableSelectionOnClick
     />
-  )
+  );
 
-  return { dataGrid }
-}
+  return { dataGrid };
+};
 
-export default useDataGrid
+export default useDataGrid;

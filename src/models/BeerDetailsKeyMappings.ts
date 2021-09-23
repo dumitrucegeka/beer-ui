@@ -14,6 +14,6 @@ const mappings: { [key: string]: string } = {
   attenuation_level: 'Attenuation level',
   brewers_tips: 'Brewers tips',
   contributed_by: 'Contributed by',
-}
+};
 
 export default mappings;
