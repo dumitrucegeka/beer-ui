@@ -48,6 +48,28 @@ const Beers = () => {
     axios
       .get(`${apiUrl}/beers`, requestConfig)
       .then((result) => result.data)
+      .then((apiData) => {
+        const beersArray = [...apiData];
+        const ratedStorageKey = 'rated-beers';
+        const persistedRated: { [key: string]: Beer } = JSON.parse(localStorage.getItem(ratedStorageKey) as string);
+        if (persistedRated) {
+          Object.entries(persistedRated).forEach(([key, value]) => {
+            const beer = beersArray.find((b) => b.id === +key);
+            beer.rating = value.rating;
+          });
+        }
+
+        const favouriteStorageKey = 'favourite-beers';
+        const persistedFavourites: { [key: string]: Beer } = JSON.parse(localStorage.getItem(favouriteStorageKey) as string);
+        if (persistedFavourites) {
+          Object.entries(persistedFavourites).forEach(([key, value]) => {
+            const beer = beersArray.find((b) => b.id === +key);
+            beer.favourite = value.favourite;
+          });
+        }
+
+        return beersArray;
+      })
       .then((result) => setBeers(result));
   }, [currentSearch, searchCriteria]);
 
