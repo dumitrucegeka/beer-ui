@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Favorite, FavoriteBorder } from '@mui/icons-material';
+import { Favorite, FavoriteBorder } from '@material-ui/icons';
 import IconButton from '@mui/material/IconButton';
 
 const FavouriteWrapper = (props: { isFavourite: boolean; onChange: (isFavourite: boolean) => void }) => {
