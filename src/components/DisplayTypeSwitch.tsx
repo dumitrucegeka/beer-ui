@@ -1,5 +1,5 @@
-import { FormControlLabel, Switch } from '@material-ui/core';
 import React from 'react';
+import { FormControlLabel, Switch } from '@material-ui/core';
 import { DisplayType, DisplayTypeContext } from '../context/DisplayTypeContext';
 
 const DisplayTypeSwitch = () => {
