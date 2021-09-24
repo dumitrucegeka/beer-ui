@@ -49,6 +49,12 @@ module.exports = {
     },
   },
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     'react/jsx-props-no-spreading': [
       'warn',
       {
@@ -60,8 +66,8 @@ module.exports = {
     'react/jsx-indent': 'off',
     'react/jsx-indent-props': 'off',
     'react/destructuring-assignment': 'warn',
-
-    '@typescript-eslint/no-unsafe-assignment': 'warn',
+    '@typescript-eslint/restrict-template-expressions': 'warn',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/jsx-indent-props': 'off',

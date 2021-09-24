@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 
