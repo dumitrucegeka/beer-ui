@@ -52,8 +52,8 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        'endOfLine': 'auto',
-      }
+        endOfLine: 'auto',
+      },
     ],
     'react/jsx-props-no-spreading': [
       'warn',
@@ -66,7 +66,7 @@ module.exports = {
     'react/jsx-indent': 'off',
     'react/jsx-indent-props': 'off',
     'react/destructuring-assignment': 'warn',
-
+    '@typescript-eslint/restrict-template-expressions': 'warn',
     '@typescript-eslint/no-unsafe-assignment': 'warn',
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/indent': 'off',

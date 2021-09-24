@@ -1,5 +1,4 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
-import { FormControlLabel, Switch } from '@material-ui/core';
 import axios from 'axios';
 import Search from '../../components/Search';
 import { Beer } from '../../models/Beer.interface';
@@ -8,6 +7,7 @@ import styles from './Beers.module.css';
 import BeerList from './components/beer-list/BeerList';
 import BeerSearchCriteriaDropdown from './components/beer-search-criteria-dropdown/BeerSearchCriteriaDropdown';
 import BeersGrid from './components/beers-grid/BeersGrid';
+import { DisplayTypeContext, DisplayType } from '../../context/DisplayTypeContext';
 
 const Beers = () => {
   const apiUrl = 'https://api.punkapi.com/v2';
@@ -16,15 +16,10 @@ const Beers = () => {
   const [beers, setBeers] = useState<Beer[]>([]);
   const [currentSearch, setCurrentSearch] = useState('');
   const [searchCriteria, setSearchCriteria] = useState(BeerSearchCriteria.NAME);
-  const [isGridView, setIsGridView] = useState(true);
 
   const handleSelectionChange = useCallback((event: any) => {
     setSearchCriteria(event.target.value);
   }, []);
-
-  const handleSwitch = (event: any): void => {
-    setIsGridView(event.target.checked);
-  };
 
   const handleSearch = (event: ChangeEvent) => {
     const searchedValue = (event.target as HTMLInputElement).value;
@@ -52,21 +47,21 @@ const Beers = () => {
   }, [currentSearch, searchCriteria]);
 
   return (
-    <div className='App'>
-      <h1>Explore the finest beers!</h1>
+    <DisplayTypeContext.Consumer>
+      {({ displayType, toggleDisplayType }) => {
+        const isGridView = displayType === DisplayType.GRID;
 
-      <div className={searchContainerStyle}>
-        <Search onChange={handleSearch} />
-        <BeerSearchCriteriaDropdown searchCriteria={searchCriteria} selectionChangeHandler={handleSelectionChange} />
-
-        <FormControlLabel
-          control={<Switch checked={isGridView} onChange={handleSwitch} color='primary' inputProps={{ 'aria-label': 'checkbox with default color' }} />}
-          label='Grid View'
-        />
-      </div>
-
-      {isGridView ? <BeersGrid beers={beers} /> : <BeerList beers={beers} />}
-    </div>
+        return (
+          <div className='App'>
+            <div className={searchContainerStyle}>
+              <Search onChange={handleSearch} />
+              <BeerSearchCriteriaDropdown searchCriteria={searchCriteria} selectionChangeHandler={handleSelectionChange} />
+            </div>
+            {isGridView ? <BeersGrid beers={beers} /> : <BeerList beers={beers} />}
+          </div>
+        );
+      }}
+    </DisplayTypeContext.Consumer>
   );
 };
 
