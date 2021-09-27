@@ -8,6 +8,7 @@ import styles from './BeerCard.module.css';
 import { Beer } from '../../../../models/Beer.interface';
 import RatingWrapper from '../../../../components/Rating';
 import FavouriteWrapper from '../../../../components/Favourite';
+import PersistanceService from '../../../../services/PersistanceService';
 
 interface BeerCardProps {
   beer: Beer;
@@ -24,26 +25,13 @@ const BeerCard = (props: BeerCardProps) => {
 
   const ratingHandler = useCallback((rating: number) => {
     beer.rating = rating;
-    const storageKey = 'rated-beers';
-    const localStorageValue = localStorage.getItem(storageKey) as string;
-    const ratedBeers: { [key: number]: Beer } = JSON.parse(localStorageValue) || {};
-    ratedBeers[beer.id] = beer;
-    localStorage.setItem(storageKey, JSON.stringify(ratedBeers));
+    PersistanceService.persistRating(beer, rating);
   }, []);
 
-  const favouriteHandler = (isFavourite: boolean) => {
+  const favouriteHandler = useCallback((isFavourite: boolean) => {
     beer.favourite = isFavourite;
-    const storageKey = 'favourite-beers';
-    const localStorageValue = localStorage.getItem(storageKey) as string;
-    const favouriteBeers: { [key: number]: Beer } = JSON.parse(localStorageValue) || {};
-    if (isFavourite) {
-      favouriteBeers[beer.id] = beer;
-    } else {
-      delete favouriteBeers[beer.id];
-    }
-
-    localStorage.setItem(storageKey, JSON.stringify(favouriteBeers));
-  };
+    PersistanceService.persistFavourite(beer, isFavourite);
+  }, []);
 
   return (
     <>

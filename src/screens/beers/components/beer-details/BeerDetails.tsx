@@ -3,6 +3,8 @@ import { Beer } from '../../../../models/Beer.interface';
 import styles from './BeerDetails.module.css';
 import mappings from '../../../../models/BeerDetailsKeyMappings';
 import FoodPairing from '../food-pairing/FoodPairing';
+import Rating from '../../../../components/Rating';
+import PersistanceService from '../../../../services/PersistanceService';
 
 const BeerDetails = (props: any) => {
   const { beerDetailsContainer, beerDetailContainer, beerDetailTitle, beerDetailValue, imageStyle } = styles;
@@ -16,6 +18,13 @@ const BeerDetails = (props: any) => {
   return (
     <div className={beerDetailsContainer}>
       <img className={imageStyle} src={beer.image_url} alt={beer.name} />
+      <Rating
+        rating={beer.rating}
+        onChange={(rating) => {
+          beer.rating = rating;
+          PersistanceService.persistRating(beer, rating);
+        }}
+      />
       <FoodPairing pairings={[...beer.food_pairing]} />
 
       <div>
