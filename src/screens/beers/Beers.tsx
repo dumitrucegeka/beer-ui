@@ -8,10 +8,11 @@ import BeerList from './components/beer-list/BeerList';
 import BeerSearchCriteriaDropdown from './components/beer-search-criteria-dropdown/BeerSearchCriteriaDropdown';
 import BeersGrid from './components/beers-grid/BeersGrid';
 import { DisplayType, DisplayTypeContext } from '../../context/DisplayTypeContext';
+import { FilterType, ListFilterContext } from '../../context/ListFilterContext';
 
 const Beers = () => {
   const apiUrl = 'https://api.punkapi.com/v2';
-  const { beerListContainer, searchContainerStyle } = styles;
+  const { searchContainerStyle } = styles;
 
   const [beers, setBeers] = useState<Beer[]>([]);
   const [currentSearch, setCurrentSearch] = useState('');
@@ -72,6 +73,8 @@ const Beers = () => {
       .then((result) => setBeers(result));
   }, [currentSearch, searchCriteria]);
 
+  useEffect(() => {}, []);
+
   return (
     <DisplayTypeContext.Consumer>
       {({ displayType, toggleDisplayType }) => {
@@ -83,7 +86,27 @@ const Beers = () => {
               <Search onChange={handleSearch} />
               <BeerSearchCriteriaDropdown searchCriteria={searchCriteria} selectionChangeHandler={handleSelectionChange} />
             </div>
-            {isGridView ? <BeersGrid beers={beers} /> : <BeerList beers={beers} />}
+            <ListFilterContext.Consumer>
+              {({ filterType, changeFilterType }) => {
+                let filteredBeers: Beer[] = [];
+                console.log(filterType);
+                switch (filterType) {
+                  case FilterType.ALL:
+                    filteredBeers = [...beers];
+                    break;
+                  case FilterType.FAVORITES:
+                    filteredBeers = beers.filter((b) => b.favourite);
+                    break;
+                  case FilterType.RATED:
+                    filteredBeers = beers.filter((b) => b.rating != null);
+                    break;
+                  default:
+                    filteredBeers = [...beers];
+                }
+
+                return isGridView ? <BeersGrid beers={filteredBeers} /> : <BeerList beers={filteredBeers} />;
+              }}
+            </ListFilterContext.Consumer>
           </div>
         );
       }}

@@ -56,7 +56,7 @@ module.exports = {
       },
     ],
     'react/jsx-props-no-spreading': [
-      'warn',
+      'off',
       {
         html: 'ignore',
       },
@@ -76,6 +76,7 @@ module.exports = {
     '@typescript-eslint/consistent-return': 'off',
     '@typescript-eslint/semi': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react-hooks/exhaustive-deps': [
       'warn',
       // {
@@ -100,7 +101,7 @@ module.exports = {
     'no-unused-vars': [
       'warn',
       {
-        vars: 'all',
+        vars: 'local',
         args: 'none',
       },
     ],

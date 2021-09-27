@@ -6,10 +6,6 @@ import {
   Drawer,
   FormControlLabel,
   IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   makeStyles,
   Switch,
   Theme,
@@ -18,8 +14,6 @@ import {
   useTheme,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import Favorite from '@material-ui/icons/Favorite';
-import StarRate from '@material-ui/icons/StarRate';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -31,6 +25,7 @@ import { BrowserRouter as Router, Route, Switch as BrowserSwitch } from 'react-r
 import Beers from '../screens/beers/Beers';
 import BeerDetails from '../screens/beers/components/beer-details/BeerDetails';
 import DisplayTypeSwitch from './DisplayTypeSwitch';
+import ListFilterComponent from './ListFilterComponent';
 
 const drawerWidth = 240;
 const toolbarHeight = '4rem';
@@ -197,20 +192,7 @@ const Sidemenu = () => {
 
           <Divider />
 
-          <List>
-            <ListItem button key='My favourites'>
-              <ListItemIcon>
-                <Favorite />
-              </ListItemIcon>
-              <ListItemText primary='My favourites' />
-            </ListItem>
-            <ListItem button key='My rated beers'>
-              <ListItemIcon>
-                <StarRate />
-              </ListItemIcon>
-              <ListItemText primary='My rated beers' />
-            </ListItem>
-          </List>
+          <ListFilterComponent />
         </Drawer>
       </div>
     </ThemeProvider>
