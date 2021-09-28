@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import './App.css';
-import { DisplayTypeContext, DisplayType } from './context/DisplayTypeContext';
+import { DisplayType, DisplayTypeContext } from './context/DisplayTypeContext';
 import Sidemenu from './components/Sidemenu';
 
 const App = () => {

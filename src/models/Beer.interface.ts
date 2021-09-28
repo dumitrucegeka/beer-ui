@@ -24,4 +24,6 @@ export interface Beer {
   food_pairing: string[];
   brewers_tips: string;
   contributed_by: string;
+  rating: number;
+  favourite: boolean;
 }

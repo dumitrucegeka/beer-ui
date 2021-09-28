@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip, Typography, Divider } from '@material-ui/core';
+import { Divider, Tooltip, Typography } from '@material-ui/core';
 
 const FoodPairingsTooltip = (props: { foodPairings: string[] }) => {
   const { foodPairings } = props;

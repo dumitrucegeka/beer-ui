@@ -1,5 +1,4 @@
-import { createTheme } from '@material-ui/core';
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
 
 export const themes = {
   light: {

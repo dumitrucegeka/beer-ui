@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 
 import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-import { Divider, IconButton, Tooltip, Typography } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import { ExitToAppOutlined } from '@material-ui/icons';
 
 import MeasurementComponent from '../../../../components/MeasurementComponent';
