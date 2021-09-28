@@ -88,9 +88,7 @@ const Sidemenu = () => {
           </div>
 
           <Divider />
-
           <DisplayTypeSwitch />
-
           <Divider />
 
           <FormControlLabel
@@ -99,7 +97,6 @@ const Sidemenu = () => {
           />
 
           <Divider />
-
           <ListFilterComponent />
         </Drawer>
       </div>

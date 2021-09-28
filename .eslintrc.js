@@ -71,7 +71,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/jsx-indent-props': 'off',
-    '@typescript-eslint/no-floating-promises': 'warn',
+    '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/no-unsafe-return': 'warn',
     '@typescript-eslint/consistent-return': 'off',
     '@typescript-eslint/semi': 'off',

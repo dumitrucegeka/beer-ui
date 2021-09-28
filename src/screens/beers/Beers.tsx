@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import Search from '../../components/Search';
 import { Beer } from '../../models/Beer.interface';
@@ -8,8 +8,9 @@ import BeerList from './components/beer-list/BeerList';
 import BeerSearchCriteriaDropdown from './components/beer-search-criteria-dropdown/BeerSearchCriteriaDropdown';
 import BeersGrid from './components/beers-grid/BeersGrid';
 import { DisplayType, DisplayTypeContext } from '../../context/DisplayTypeContext';
-import { FilterType, ListFilterContext } from '../../context/ListFilterContext';
+import { ListFilterContext } from '../../context/ListFilterContext';
 import PersistanceService from '../../services/PersistanceService';
+import FilterService from '../../services/FilterService';
 
 const Beers = () => {
   const apiUrl = 'https://api.punkapi.com/v2';
@@ -18,6 +19,7 @@ const Beers = () => {
   const [beers, setBeers] = useState<Beer[]>([]);
   const [currentSearch, setCurrentSearch] = useState('');
   const [searchCriteria, setSearchCriteria] = useState(BeerSearchCriteria.NAME);
+  const { filterType } = useContext(ListFilterContext);
 
   const handleSelectionChange = useCallback((event: any) => {
     setSearchCriteria(event.target.value);
@@ -66,27 +68,7 @@ const Beers = () => {
               <Search onChange={handleSearch} />
               <BeerSearchCriteriaDropdown searchCriteria={searchCriteria} selectionChangeHandler={handleSelectionChange} />
             </div>
-            <ListFilterContext.Consumer>
-              {({ filterType, changeFilterType }) => {
-                let filteredBeers: Beer[] = [];
-                console.log(filterType);
-                switch (filterType) {
-                  case FilterType.ALL:
-                    filteredBeers = [...beers];
-                    break;
-                  case FilterType.FAVORITES:
-                    filteredBeers = beers.filter((b) => b.favourite);
-                    break;
-                  case FilterType.RATED:
-                    filteredBeers = beers.filter((b) => b.rating != null);
-                    break;
-                  default:
-                    filteredBeers = [...beers];
-                }
-
-                return isGridView ? <BeersGrid beers={filteredBeers} /> : <BeerList beers={filteredBeers} />;
-              }}
-            </ListFilterContext.Consumer>
+            {isGridView ? <BeersGrid beers={FilterService.filter(beers, filterType)} /> : <BeerList beers={FilterService.filter(beers, filterType)} />}
           </div>
         );
       }}
