@@ -12,16 +12,24 @@ const ListFilterComponent = () => {
   return (
     <ListFilterContext.Provider value={{ filterType, changeFilterType }}>
       <List>
-        <ListItem button key='My favourites'>
+        <ListItem
+          button
+          key='My favourites'
+          onClick={() => {
+            console.log('click fav');
+            changeFilterType(FilterType.FAVORITES);
+          }}
+        >
           <ListItemIcon>
             <Favorite />
           </ListItemIcon>
           <ListItemText primary='My favourites' />
         </ListItem>
         <ListItem
+          button
           key='My rated beers'
           onClick={() => {
-            console.log('click');
+            console.log('click rating');
             changeFilterType(FilterType.RATED);
           }}
         >

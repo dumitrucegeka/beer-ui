@@ -9,6 +9,7 @@ import BeerSearchCriteriaDropdown from './components/beer-search-criteria-dropdo
 import BeersGrid from './components/beers-grid/BeersGrid';
 import { DisplayType, DisplayTypeContext } from '../../context/DisplayTypeContext';
 import { FilterType, ListFilterContext } from '../../context/ListFilterContext';
+import PersistanceService from '../../services/PersistanceService';
 
 const Beers = () => {
   const apiUrl = 'https://api.punkapi.com/v2';
@@ -45,30 +46,9 @@ const Beers = () => {
       .get<Beer[]>(`${apiUrl}/beers`, requestConfig)
       .then((result) => result.data)
       .then((apiData) => {
-        const beersArray = [...apiData];
-        const ratedStorageKey = 'rated-beers';
-        const persistedRated: { [key: string]: Beer } = JSON.parse(localStorage.getItem(ratedStorageKey) as string);
-        if (persistedRated) {
-          Object.entries(persistedRated).forEach(([key, value]) => {
-            const beer = beersArray.find((b) => b.id === +key);
-            if (beer) {
-              beer.rating = value.rating;
-            }
-          });
-        }
-
-        const favouriteStorageKey = 'favourite-beers';
-        const persistedFavourites: { [key: string]: Beer } = JSON.parse(localStorage.getItem(favouriteStorageKey) as string);
-        if (persistedFavourites) {
-          Object.entries(persistedFavourites).forEach(([key, value]) => {
-            const beer = beersArray.find((b) => b.id === +key);
-            if (beer) {
-              beer.favourite = value.favourite;
-            }
-          });
-        }
-
-        return beersArray;
+        const ratedBeers = PersistanceService.restoreRating(apiData);
+        const result = PersistanceService.restoreFavorites(ratedBeers);
+        return result;
       })
       .then((result) => setBeers(result));
   }, [currentSearch, searchCriteria]);
