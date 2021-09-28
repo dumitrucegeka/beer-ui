@@ -13,7 +13,11 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'start',
-      justifyContent: 'center',
+      justifyContent: 'start',
+      margin: '1rem 1rem 2rem 0rem',
+      border: '1px solid lightblue',
+      borderRadius: '2rem',
+      padding: '1rem',
     },
   })
 );
