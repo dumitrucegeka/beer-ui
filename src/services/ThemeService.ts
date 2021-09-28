@@ -3,7 +3,7 @@ import { createTheme } from '@material-ui/core/styles';
 import { deepOrange, deepPurple, lightBlue, orange } from '@material-ui/core/colors';
 
 const toolbarHeight = '4rem';
-const drawerWidth = 240;
+const drawerWidth = '15rem';
 
 const ThemeService = {
   createDarkTheme(darkState: boolean) {
@@ -27,7 +27,7 @@ const ThemeService = {
     return makeStyles((theme: Theme) =>
       createStyles({
         root: {
-          display: 'flex',
+          // display: 'flex',
         },
         appBar: {
           height: toolbarHeight,
@@ -74,14 +74,14 @@ const ThemeService = {
             duration: theme.transitions.duration.leavingScreen,
           }),
           marginTop: toolbarHeight,
-          marginRight: -drawerWidth,
+          marginRight: 0,
         },
         contentShift: {
           transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen,
           }),
-          marginRight: 0,
+          marginRight: drawerWidth,
         },
       })
     );

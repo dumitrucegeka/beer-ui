@@ -8,7 +8,7 @@ import PersistanceService from '../../../../services/PersistanceService';
 import DetailsRow from './DetailsRow';
 
 const BeerDetails = (props: any) => {
-  const { beerDetailsContainer, imageStyle } = styles;
+  const { beerDetailsContainer, imageStyle, beerDetailsSummary, beerDetailsSummaryRows, beerDetailsGeneral } = styles;
   const beer = { ...props?.location?.state?.beer } as Beer;
 
   function getBeerDetailDisplayValue(beerDetailKey: string): string {
@@ -18,20 +18,25 @@ const BeerDetails = (props: any) => {
 
   return (
     <div className={beerDetailsContainer}>
-      <div>
+      <div className={beerDetailsSummary}>
         <img className={imageStyle} src={beer.image_url} alt={beer.name} />
-        <Rating
-          rating={beer.rating}
-          onChange={(rating) => {
-            beer.rating = rating;
-            PersistanceService.persistRating(beer, rating);
-          }}
-        />
-        <DetailsRow propertyName='name' propertyValue={beer.name} />
-        <FoodPairing pairings={[...beer.food_pairing]} />
+
+        <div className={beerDetailsSummaryRows}>
+          <DetailsRow propertyName='name' propertyValue={beer.name} />
+
+          <FoodPairing pairings={[...beer.food_pairing]} />
+
+          <Rating
+            rating={beer.rating}
+            onChange={(rating) => {
+              beer.rating = rating;
+              PersistanceService.persistRating(beer, rating);
+            }}
+          />
+        </div>
       </div>
 
-      <div>
+      <div className={beerDetailsGeneral}>
         {Object.keys(beer).map((beerDetail, index) => {
           if (typeof beer[beerDetail as keyof Beer] === 'object' || beerDetail === 'image_url' || beerDetail === 'food_pairing' || beerDetail === 'id') {
             return;

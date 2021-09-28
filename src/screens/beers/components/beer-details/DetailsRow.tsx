@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './BeerDetails.module.css';
+import React, { memo } from 'react';
+import { createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 import mappings from '../../../../models/BeerDetailsKeyMappings';
 
 function getBeerDetailDisplayValue(beerDetailKey: string): string {
@@ -7,15 +7,27 @@ function getBeerDetailDisplayValue(beerDetailKey: string): string {
   return mapping || beerDetailKey;
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    beerDetailContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'start',
+      justifyContent: 'center',
+    },
+  })
+);
+
 const DetailsRow = (props: { propertyName: string; propertyValue: any }) => {
-  const { beerDetailContainer, beerDetailTitle, beerDetailValue } = styles;
+  const { beerDetailContainer } = useStyles();
   const { propertyName, propertyValue } = props;
+
   return (
     <div className={beerDetailContainer}>
-      <p className={beerDetailTitle}>{getBeerDetailDisplayValue(propertyName)}</p>
-      <p className={beerDetailValue}>{propertyValue}</p>
+      <Typography variant='subtitle1'>{getBeerDetailDisplayValue(propertyName)}</Typography>
+      <Typography variant='subtitle2'>{propertyValue}</Typography>
     </div>
   );
 };
 
-export default DetailsRow;
+export default memo(DetailsRow);

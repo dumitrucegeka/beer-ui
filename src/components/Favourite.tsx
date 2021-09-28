@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Favorite, FavoriteBorder } from '@material-ui/icons';
-import IconButton from '@mui/material/IconButton';
+import { IconButton } from '@material-ui/core';
 
 const FavouriteWrapper = (props: { isFavourite: boolean; onChange: (isFavourite: boolean) => void }) => {
   const { isFavourite, onChange } = props;
@@ -9,6 +9,7 @@ const FavouriteWrapper = (props: { isFavourite: boolean; onChange: (isFavourite:
     setFavourite(!favourite);
     onChange(!favourite);
   };
+
   return <IconButton onClick={clickCallback}>{favourite ? <Favorite /> : <FavoriteBorder />}</IconButton>;
 };
 
