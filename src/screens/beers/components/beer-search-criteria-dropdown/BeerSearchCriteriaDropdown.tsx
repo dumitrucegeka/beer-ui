@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react';
-import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@material-ui/core';
+import React from 'react';
+import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 import styles from './BeerSearchCriteriaDropdown.module.css';
 import BeerSearchCriteria from '../../../../models/BeerSearchCriteria.enum';
 

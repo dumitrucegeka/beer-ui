@@ -5,9 +5,12 @@
   "private": true,
   "jest": {},
   "dependencies": {
+    "@emotion/react": "11.4.1",
+    "@emotion/styled": "11.3.0",
     "@material-ui/core": "4.12.3",
-    "@material-ui/icons": "^4.11.2",
     "@mui/x-data-grid": "^4.0.0",
+    "@mui/material": "5.0.1",
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -36,10 +39,10 @@
     "test-jest": "jest",
     "test:watch": "jest --watch",
     "eject": "react-scripts eject",
-    "lint": "eslint 'src/**/*.tsx'",
+    "lint": "eslint \"src/**/*.tsx\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "format": "prettier --config ./.prettierrc --write \"src/**/*.ts\""
+    "format": "prettier --config ./.prettierrc --write \"src/**/*.tsx\""
   },
   "browserslist": {
     "production": [

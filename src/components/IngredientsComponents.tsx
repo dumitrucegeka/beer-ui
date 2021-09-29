@@ -7,7 +7,7 @@ import IngredientComponent from './IngredientComponent';
 const IngredientsComponent = (ingredients: Ingredients) => {
   const entries = Object.entries(ingredients);
 
-  const ingredientComponents: ReactNode[] = entries.map((entry: any) => {
+  const ingredientComponents: ReactNode[] = entries.map((entry: [string, Ingredient[] | string]) => {
     const ingredientType = entry[0] as IngredientType;
     switch (ingredientType) {
       case 'hops':
