@@ -10,6 +10,7 @@ const ThemeService = {
     const palletType = darkState ? 'dark' : 'light';
     const mainPrimaryColor = darkState ? orange[500] : lightBlue[500];
     const mainSecondaryColor = darkState ? deepOrange[900] : deepPurple[500];
+
     return createTheme({
       palette: {
         type: palletType,
@@ -26,9 +27,6 @@ const ThemeService = {
   createThemeStyles() {
     return makeStyles((theme: Theme) =>
       createStyles({
-        root: {
-          // display: 'flex',
-        },
         appBar: {
           height: toolbarHeight,
           transition: theme.transitions.create(['margin', 'width'], {

@@ -1,6 +1,9 @@
 import React from 'react';
-import { Beer } from '../../../../models/Beer.interface';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowBackForward from '@material-ui/icons/ArrowForward';
 import styles from './BeerDetails.module.css';
+
+import { Beer } from '../../../../models/Beer.interface';
 import mappings from '../../../../models/BeerDetailsKeyMappings';
 import FoodPairing from '../food-pairing/FoodPairing';
 import Rating from '../../../../components/Rating';
@@ -10,6 +13,8 @@ import DetailsRow from './DetailsRow';
 const BeerDetails = (props: any) => {
   const { beerDetailsContainer, imageStyle, beerDetailsSummary, beerDetailsSummaryRows, beerDetailsGeneral } = styles;
   const beer = { ...props?.location?.state?.beer } as Beer;
+  const goToPreviousBeer = { ...props?.location?.state?.goToPreviousBeer };
+  const goToNextBeer = { ...props?.location?.state?.goToNextBeer };
 
   function getBeerDetailDisplayValue(beerDetailKey: string): string {
     const mapping = mappings[beerDetailKey];
@@ -19,6 +24,8 @@ const BeerDetails = (props: any) => {
   return (
     <div className={beerDetailsContainer}>
       <div className={beerDetailsSummary}>
+        <ArrowBackIcon />
+
         <img className={imageStyle} src={beer.image_url} alt={beer.name} />
 
         <div className={beerDetailsSummaryRows}>
@@ -34,6 +41,8 @@ const BeerDetails = (props: any) => {
             }}
           />
         </div>
+
+        <ArrowBackForward />
       </div>
 
       <div className={beerDetailsGeneral}>

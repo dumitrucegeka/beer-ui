@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
+
 import axios from 'axios';
 import Search from '../../components/Search';
 import { Beer } from '../../models/Beer.interface';
@@ -14,12 +15,18 @@ import FilterService from '../../services/FilterService';
 
 const Beers = () => {
   const apiUrl = 'https://api.punkapi.com/v2';
+
   const { searchContainerStyle } = styles;
 
   const [beers, setBeers] = useState<Beer[]>([]);
   const [currentSearch, setCurrentSearch] = useState('');
   const [searchCriteria, setSearchCriteria] = useState(BeerSearchCriteria.NAME);
+
   const { filterType } = useContext(ListFilterContext);
+  const { displayType } = useContext(DisplayTypeContext);
+
+  const isGridView = displayType === DisplayType.GRID;
+  console.log(' ---BEERS--- ', { filterType });
 
   const handleSelectionChange = useCallback((event: any) => {
     setSearchCriteria(event.target.value);
@@ -52,27 +59,17 @@ const Beers = () => {
         const result = PersistanceService.restoreFavorites(ratedBeers);
         return result;
       })
-      .then((result) => setBeers(result));
-  }, [currentSearch, searchCriteria]);
-
-  useEffect(() => {}, []);
+      .then((result) => setBeers(FilterService.filter(result, filterType)));
+  }, [currentSearch, searchCriteria, filterType]);
 
   return (
-    <DisplayTypeContext.Consumer>
-      {({ displayType, toggleDisplayType }) => {
-        const isGridView = displayType === DisplayType.GRID;
-
-        return (
-          <div className='App'>
-            <div className={searchContainerStyle}>
-              <Search onChange={handleSearch} />
-              <BeerSearchCriteriaDropdown searchCriteria={searchCriteria} selectionChangeHandler={handleSelectionChange} />
-            </div>
-            {isGridView ? <BeersGrid beers={FilterService.filter(beers, filterType)} /> : <BeerList beers={FilterService.filter(beers, filterType)} />}
-          </div>
-        );
-      }}
-    </DisplayTypeContext.Consumer>
+    <div className='App'>
+      <div className={searchContainerStyle}>
+        <Search onChange={handleSearch} />
+        <BeerSearchCriteriaDropdown searchCriteria={searchCriteria} selectionChangeHandler={handleSelectionChange} />
+      </div>
+      {isGridView ? <BeersGrid beers={FilterService.filter(beers, filterType)} /> : <BeerList beers={FilterService.filter(beers, filterType)} />}
+    </div>
   );
 };
 

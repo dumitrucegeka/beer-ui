@@ -11,6 +11,8 @@ import PersistanceService from '../../../../services/PersistanceService';
 
 interface BeerCardProps {
   beer: Beer;
+  // goToNextBeer: (beerId: number) => void;
+  // goToPreviousBeer: (beerId: number) => void;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -74,6 +76,7 @@ const BeerCard = (props: BeerCardProps) => {
             <Typography className={textCenterAlignment} variant='body1' color='textPrimary' gutterBottom>
               {beer.name}
             </Typography>
+
             <FavouriteWrapper isFavourite={beer.favourite} onChange={favouriteHandler} />
 
             <Typography className={textCenterAlignment} variant='caption' color='textSecondary' display='block' gutterBottom>
