@@ -7,7 +7,7 @@ import ArrowBackForward from '@material-ui/icons/ArrowForward';
 import { Beer } from '../../../../models/Beer.interface';
 import mappings from '../../../../models/BeerDetailsKeyMappings';
 import FoodPairing from '../food-pairing/FoodPairing';
-import Rating from '../../../../components/Rating';
+import Rating from '../../../../shared-components/Rating';
 import PersistanceService from '../../../../services/PersistanceService';
 import DetailsRow from './DetailsRow';
 import styles from './BeerDetails.module.css';

@@ -5,8 +5,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { Button, CardActions, CardMedia, createStyles, makeStyles, Theme } from '@material-ui/core';
 import { Beer } from '../../../../models/Beer.interface';
-import RatingWrapper from '../../../../components/Rating';
-import FavouriteWrapper from '../../../../components/Favourite';
+import RatingWrapper from '../../../../shared-components/Rating';
+import FavouriteWrapper from '../../../../shared-components/Favourite';
 import PersistanceService from '../../../../services/PersistanceService';
 
 interface BeerCardProps {

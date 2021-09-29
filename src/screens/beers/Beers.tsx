@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import Search from '../../components/Search';
+import Search from '../../shared-components/Search';
 import { Beer } from '../../models/Beer.interface';
 import BeerSearchCriteria from '../../models/BeerSearchCriteria.enum';
 import styles from './Beers.module.css';

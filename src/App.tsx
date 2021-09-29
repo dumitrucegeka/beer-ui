@@ -3,7 +3,7 @@ import './App.css';
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import { ToastContainer } from 'react-toastify';
 import { DisplayType, DisplayTypeContext } from './context/DisplayTypeContext';
-import Sidemenu from './components/Sidemenu';
+import Sidemenu from './shared-components/Sidemenu';
 import { FilterType, ListFilterContext } from './context/ListFilterContext';
 import ThemeService from './services/ThemeService';
 import ThemeContext from './context/ThemeContext';
