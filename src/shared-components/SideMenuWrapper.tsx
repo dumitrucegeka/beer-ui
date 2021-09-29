@@ -15,8 +15,7 @@ import ThemeSwitch from './ThemeSwitch';
 
 const useStyles = ThemeService.createThemeStyles();
 
-// TODO - I shall be renamed to ShellComponent | Dashboard | Root or any other better name
-const Sidemenu = () => {
+const SideMenuWrapper = () => {
   const [open, setOpen] = useState(false);
 
   const classes = useStyles();
@@ -93,4 +92,4 @@ const Sidemenu = () => {
   );
 };
 
-export default Sidemenu;
+export default SideMenuWrapper;

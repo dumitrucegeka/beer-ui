@@ -5,7 +5,9 @@ import ReactDOM from 'react-dom';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import configureInterceptor from './interceptors/http-error.interceptor';
 
+configureInterceptor();
 ReactDOM.render(
   <React.StrictMode>
     <App />

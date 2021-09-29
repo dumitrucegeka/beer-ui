@@ -16,14 +16,6 @@ const useDataGrid = (props: UseDataGridProps) => {
       className={classes}
       rows={rows}
       columns={columns}
-      // components={
-      // {
-      // ColumnMenu: MyCustomColumnMenu,
-      //   }
-      // }
-      // componentsProps={{
-      //   columnMenu: { background: 'red', counter: rows.length },
-      // }}
       pageSize={25}
       rowsPerPageOptions={rowsPerPageOptions}
       checkboxSelection

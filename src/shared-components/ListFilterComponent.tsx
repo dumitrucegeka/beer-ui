@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { createStyles, ListItem, ListItemIcon, ListItemText, makeStyles, Theme } from '@material-ui/core';
 import List from '@material-ui/core/List';
-import { Favorite, StarRate } from '@material-ui/icons';
+import { Favorite, StarRate, ViewHeadline } from '@material-ui/icons';
 import { FilterType, ListFilterContext } from '../context/ListFilterContext';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -23,7 +23,7 @@ const ListFilterComponent = () => {
     <List>
       <ListItem className={filterType === FilterType.ALL ? active : inactive} button key='All' onClick={() => changeFilterType(FilterType.ALL)}>
         <ListItemIcon>
-          <StarRate />
+          <ViewHeadline />
         </ListItemIcon>
 
         <ListItemText primary='See All' />
