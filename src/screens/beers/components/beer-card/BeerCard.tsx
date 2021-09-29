@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { Button, CardActionArea, CardActions, CardMedia, createStyles, makeStyles, Theme } from '@material-ui/core';
+import { Button, CardActions, CardMedia, createStyles, makeStyles, Theme } from '@material-ui/core';
 import { Beer } from '../../../../models/Beer.interface';
 import RatingWrapper from '../../../../components/Rating';
 import FavouriteWrapper from '../../../../components/Favourite';
@@ -11,8 +11,6 @@ import PersistanceService from '../../../../services/PersistanceService';
 
 interface BeerCardProps {
   beer: Beer;
-  // goToNextBeer: (beerId: number) => void;
-  // goToPreviousBeer: (beerId: number) => void;
 }
 
 const useStyles = makeStyles((theme: Theme) =>

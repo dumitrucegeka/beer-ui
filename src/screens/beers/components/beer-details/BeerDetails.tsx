@@ -64,7 +64,7 @@ const BeerDetails = (props: any) => {
         <img className={imageStyle} src={beer.image_url} alt={beer.name} />
 
         <div className={beerDetailsSummaryRows}>
-          <DetailsRow propertyName='name' propertyValue={beer.name} />
+          <DetailsRow propertyName='name' propertyValue={beer.name} bordered={false} />
 
           <FoodPairing pairings={[...beer.food_pairing]} />
 
@@ -86,7 +86,7 @@ const BeerDetails = (props: any) => {
             return;
           }
 
-          return <DetailsRow key={`${index.toString() + beer?.name}`} propertyName={beerDetail} propertyValue={beer[beerDetail as keyof Beer]} />;
+          return <DetailsRow key={`${index.toString() + beer?.name}`} propertyName={beerDetail} propertyValue={beer[beerDetail as keyof Beer]} bordered />;
         })}
       </div>
     </div>
