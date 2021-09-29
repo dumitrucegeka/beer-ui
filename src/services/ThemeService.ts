@@ -3,13 +3,14 @@ import { createTheme } from '@material-ui/core/styles';
 import { deepOrange, deepPurple, lightBlue, orange } from '@material-ui/core/colors';
 
 const toolbarHeight = '4rem';
-const drawerWidth = 240;
+const drawerWidth = '15rem';
 
 const ThemeService = {
   createDarkTheme(darkState: boolean) {
     const palletType = darkState ? 'dark' : 'light';
     const mainPrimaryColor = darkState ? orange[500] : lightBlue[500];
     const mainSecondaryColor = darkState ? deepOrange[900] : deepPurple[500];
+
     return createTheme({
       palette: {
         type: palletType,
@@ -26,9 +27,6 @@ const ThemeService = {
   createThemeStyles() {
     return makeStyles((theme: Theme) =>
       createStyles({
-        root: {
-          display: 'flex',
-        },
         appBar: {
           height: toolbarHeight,
           transition: theme.transitions.create(['margin', 'width'], {
@@ -74,14 +72,14 @@ const ThemeService = {
             duration: theme.transitions.duration.leavingScreen,
           }),
           marginTop: toolbarHeight,
-          marginRight: -drawerWidth,
+          marginRight: 0,
         },
         contentShift: {
           transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen,
           }),
-          marginRight: 0,
+          marginRight: drawerWidth,
         },
       })
     );

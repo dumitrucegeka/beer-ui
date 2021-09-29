@@ -1,17 +1,20 @@
 import { Beer } from '../models/Beer.interface';
 
+enum StorageKey {
+  RATED_BEERS = 'rated-beers',
+  FAVOURITE_BEERS = 'favourite-beers',
+}
+
 const PersistanceService = {
   persistRating(beer: Beer, rating: number): void {
-    const storageKey = 'rated-beers';
-    const localStorageValue = localStorage.getItem(storageKey) as string;
+    const localStorageValue = localStorage.getItem(StorageKey.RATED_BEERS) as string;
     const ratedBeers: { [key: number]: Beer } = JSON.parse(localStorageValue) || {};
     ratedBeers[beer.id] = beer;
-    localStorage.setItem(storageKey, JSON.stringify(ratedBeers));
+    localStorage.setItem(StorageKey.RATED_BEERS, JSON.stringify(ratedBeers));
   },
 
   persistFavourite(beer: Beer, isFavourite: boolean): void {
-    const storageKey = 'favourite-beers';
-    const localStorageValue = localStorage.getItem(storageKey) as string;
+    const localStorageValue = localStorage.getItem(StorageKey.FAVOURITE_BEERS) as string;
     const favouriteBeers: { [key: number]: Beer } = JSON.parse(localStorageValue) || {};
     if (isFavourite) {
       favouriteBeers[beer.id] = beer;
@@ -19,13 +22,13 @@ const PersistanceService = {
       delete favouriteBeers[beer.id];
     }
 
-    localStorage.setItem(storageKey, JSON.stringify(favouriteBeers));
+    localStorage.setItem(StorageKey.FAVOURITE_BEERS, JSON.stringify(favouriteBeers));
   },
 
   restoreRating(apiData: Beer[]): Beer[] {
     const beersArray = [...apiData];
-    const ratedStorageKey = 'rated-beers';
-    const persistedRated: { [key: string]: Beer } = JSON.parse(localStorage.getItem(ratedStorageKey) as string);
+    const persistedRated: { [key: string]: Beer } = JSON.parse(localStorage.getItem(StorageKey.RATED_BEERS) as string);
+
     if (persistedRated) {
       Object.entries(persistedRated).forEach(([key, value]) => {
         const beer = beersArray.find((b) => b.id === +key);
@@ -39,8 +42,8 @@ const PersistanceService = {
 
   restoreFavorites(apiData: Beer[]): Beer[] {
     const result = [...apiData];
-    const favouriteStorageKey = 'favourite-beers';
-    const persistedFavourites: { [key: string]: Beer } = JSON.parse(localStorage.getItem(favouriteStorageKey) as string);
+    const persistedFavourites: { [key: string]: Beer } = JSON.parse(localStorage.getItem(StorageKey.FAVOURITE_BEERS) as string);
+
     if (persistedFavourites) {
       Object.entries(persistedFavourites).forEach(([key, value]) => {
         const beer = result.find((b) => b.id === +key);

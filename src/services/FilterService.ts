@@ -3,22 +3,15 @@ import { Beer } from '../models/Beer.interface';
 
 const FilterService = {
   filter(allBeers: Beer[], filterType: FilterType): Beer[] {
-    let filteredBeers: Beer[] = [];
-    console.log(filterType);
     switch (filterType) {
-      case FilterType.ALL:
-        filteredBeers = [...allBeers];
-        break;
       case FilterType.FAVORITES:
-        filteredBeers = allBeers.filter((b) => b.favourite);
-        break;
+        return allBeers.filter((b) => b.favourite);
       case FilterType.RATED:
-        filteredBeers = allBeers.filter((b) => b.rating != null);
-        break;
+        return allBeers.filter((b) => b.rating != null);
+      case FilterType.ALL:
       default:
-        filteredBeers = [...allBeers];
+        return [...allBeers];
     }
-    return filteredBeers;
   },
 };
 

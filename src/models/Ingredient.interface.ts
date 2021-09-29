@@ -3,8 +3,8 @@ import Measurement from './Measurement.interface';
 export interface Ingredient {
   name: string;
   amount: Measurement;
-  add?: string; // TODO
-  attribute?: string; // TODO
+  add?: string;
+  attribute?: string;
 }
 
 export type IngredientType = 'malt' | 'hops' | 'yeast';
