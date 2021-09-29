@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
-
-import axios from 'axios';
-import Search from '../../components/Search';
+import { toast } from 'react-toastify';
+import Search from '../../shared-components/Search';
 import { Beer } from '../../models/Beer.interface';
 import BeerSearchCriteria from '../../models/BeerSearchCriteria.enum';
 import styles from './Beers.module.css';
@@ -12,10 +11,9 @@ import { DisplayType, DisplayTypeContext } from '../../context/DisplayTypeContex
 import { ListFilterContext } from '../../context/ListFilterContext';
 import PersistanceService from '../../services/PersistanceService';
 import FilterService from '../../services/FilterService';
+import BeerApiService from '../../services/BeerApiService';
 
 const Beers = () => {
-  const apiUrl = 'https://api.punkapi.com/v2';
-
   const { searchContainerStyle } = styles;
 
   const [beers, setBeers] = useState<Beer[]>([]);
@@ -26,7 +24,6 @@ const Beers = () => {
   const { displayType } = useContext(DisplayTypeContext);
 
   const isGridView = displayType === DisplayType.GRID;
-  console.log(' ---BEERS--- ', { filterType });
 
   const handleSelectionChange = useCallback((event: any) => {
     setSearchCriteria(event.target.value);
@@ -51,15 +48,16 @@ const Beers = () => {
   useEffect(() => {
     const requestConfig = currentSearch ? { params: getSearchParams(currentSearch, searchCriteria) } : undefined;
 
-    axios
-      .get<Beer[]>(`${apiUrl}/beers`, requestConfig)
-      .then((result) => result.data)
-      .then((apiData) => {
-        const ratedBeers = PersistanceService.restoreRating(apiData);
-        const result = PersistanceService.restoreFavorites(ratedBeers);
-        return result;
-      })
-      .then((result) => setBeers(FilterService.filter(result, filterType)));
+    // TODO: move restore calls this into an interceptor
+
+    BeerApiService.getAll(requestConfig)
+      .then((result) => PersistanceService.restoreRating(result))
+      .then((result) => PersistanceService.restoreFavorites(result))
+      .then((result) => setBeers(FilterService.filter(result, filterType)))
+      .catch((err) => {
+        toast('Could initialize the list!', { type: 'error' });
+        Promise.resolve([]);
+      });
   }, [currentSearch, searchCriteria, filterType]);
 
   return (
@@ -68,7 +66,7 @@ const Beers = () => {
         <Search onChange={handleSearch} />
         <BeerSearchCriteriaDropdown searchCriteria={searchCriteria} selectionChangeHandler={handleSelectionChange} />
       </div>
-      {isGridView ? <BeersGrid beers={FilterService.filter(beers, filterType)} /> : <BeerList beers={FilterService.filter(beers, filterType)} />}
+      {isGridView ? <BeersGrid beers={beers} /> : <BeerList beers={beers} />}
     </div>
   );
 };

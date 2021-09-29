@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import { ToastContainer } from 'react-toastify';
 import { DisplayType, DisplayTypeContext } from './context/DisplayTypeContext';
-import Sidemenu from './components/Sidemenu';
+import SideMenuWrapper from './shared-components/SideMenuWrapper';
 import { FilterType, ListFilterContext } from './context/ListFilterContext';
 import ThemeService from './services/ThemeService';
 import ThemeContext from './context/ThemeContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const displayTypeContext = useContext(DisplayTypeContext);
@@ -39,8 +41,8 @@ const App = () => {
         <DisplayTypeContext.Provider value={{ displayType, toggleDisplayType }}>
           <ListFilterContext.Provider value={{ filterType, changeFilterType }}>
             <CssBaseline />
-
-            <Sidemenu />
+            <SideMenuWrapper />
+            <ToastContainer />
           </ListFilterContext.Provider>
         </DisplayTypeContext.Provider>
       </ThemeProvider>

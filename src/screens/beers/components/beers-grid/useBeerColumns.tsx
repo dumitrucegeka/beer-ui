@@ -4,13 +4,13 @@ import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { IconButton } from '@material-ui/core';
 import { ExitToAppOutlined } from '@material-ui/icons';
 
-import MeasurementComponent from '../../../../components/MeasurementComponent';
+import MeasurementComponent from '../../../../shared-components/MeasurementComponent';
 import Measurement from '../../../../models/Measurement.interface';
 import { Ingredients } from '../../../../models/Ingredient.interface';
-import IngredientsComponent from '../../../../components/IngredientsComponents';
+import IngredientsComponent from '../../../../shared-components/IngredientsComponents';
 import { BrewingMethods } from '../../../../models/BrewingMethod.interface';
-import BrewingMethodsComponent from '../../../../components/BrewingMethodsComponent';
-import FoodPairingsTooltip from '../../../../components/FoodPairingsTooltip';
+import BrewingMethodsComponent from '../../../../shared-components/BrewingMethodsComponent';
+import FoodPairingsTooltip from '../../../../shared-components/FoodPairingsTooltip';
 
 const useBeerColumns = (openDetailsHandler: (beerId: string) => void) => {
   const renderMeasurement = (params: GridValueGetterParams) => {

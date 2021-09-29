@@ -3,7 +3,7 @@ import { createTheme } from '@material-ui/core/styles';
 import { deepOrange, deepPurple, lightBlue, orange } from '@material-ui/core/colors';
 
 const toolbarHeight = '4rem';
-const drawerWidth = '15rem';
+const drawerWidth = '16rem';
 
 const ThemeService = {
   createDarkTheme(darkState: boolean) {
