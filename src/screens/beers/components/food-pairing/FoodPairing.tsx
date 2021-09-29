@@ -9,7 +9,7 @@ interface FoodPairingProps {
 const FoodPairing = (props: FoodPairingProps) => {
   const { pairings } = props;
 
-  return pairings?.length ? <DetailsRow propertyName='Food Pairing:' propertyValue={pairings.join(', ')} /> : null;
+  return pairings?.length ? <DetailsRow propertyName='Food Pairing:' propertyValue={pairings.join(', ')} bordered={false} /> : null;
 };
 
 export default FoodPairing;

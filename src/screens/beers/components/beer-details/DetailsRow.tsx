@@ -15,19 +15,25 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'start',
       justifyContent: 'start',
       margin: '1rem 1rem 2rem 0rem',
-      border: '1px solid lightblue',
       borderRadius: '2rem',
       padding: '1rem',
+    },
+    borderedClass: {
+      border: '1px solid lightblue',
+    },
+    nonBorderedClass: {
+      border: 'none',
     },
   })
 );
 
-const DetailsRow = (props: { propertyName: string; propertyValue: any }) => {
-  const { beerDetailContainer } = useStyles();
-  const { propertyName, propertyValue } = props;
+const DetailsRow = (props: { propertyName: string; propertyValue: any; bordered: boolean }) => {
+  const { beerDetailContainer, borderedClass, nonBorderedClass } = useStyles();
+  const { propertyName, propertyValue, bordered } = props;
+  const borderStyle = bordered ? borderedClass : nonBorderedClass;
 
   return (
-    <div className={beerDetailContainer}>
+    <div className={`${beerDetailContainer} ${borderStyle}`}>
       <Typography variant='subtitle1'>{getBeerDetailDisplayValue(propertyName)}</Typography>
       <Typography variant='subtitle2'>{propertyValue}</Typography>
     </div>
