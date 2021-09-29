@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import axios from 'axios';
 import { useHistory, useParams } from 'react-router-dom';
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -11,8 +10,8 @@ import FoodPairing from '../food-pairing/FoodPairing';
 import Rating from '../../../../components/Rating';
 import PersistanceService from '../../../../services/PersistanceService';
 import DetailsRow from './DetailsRow';
-import FilterService from '../../../../services/FilterService';
 import styles from './BeerDetails.module.css';
+import BeerApiService from '../../../../services/BeerApiService';
 
 const BeerDetails = (props: any) => {
   const { beerDetailsContainer, imageStyle, beerDetailsSummary, beerDetailsSummaryRows, beerDetailsGeneral } = styles;
@@ -32,22 +31,23 @@ const BeerDetails = (props: any) => {
 
   useEffect(() => {
     const apiUrl = 'https://api.punkapi.com/v2/beers/';
-    console.log({ beerId });
-
     if (beerId) {
-      axios.get<Beer[]>(`${apiUrl}${beerId}`).then((result) => setBeer(result.data[0]));
+      BeerApiService.getById(beerId)
+        .then((result) => setBeer(result))
+        .catch((err) => history.push('/beers'));
     }
   }, [beerId]);
 
   const goBack = useCallback(() => {
-    const id = beerId - 1 > 0 ? beerId - 1 : 1;
+    let id = beerId;
+    if (beerId > 1) {
+      id = beerId - 1;
+    }
     history.push(`/beers/${id}`, { beerId: id });
   }, [beerId, history]);
 
   const goForward = () => {
-    // TODO - handle 404 for numbers too big
     const newId = beerId + 1;
-    console.log({ newId });
     history.push(`/beers/${newId}`, { beerId: newId });
   };
 
