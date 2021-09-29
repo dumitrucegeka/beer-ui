@@ -1,7 +1,0 @@
-.beerListContainerStyle {
-  margin: 5% 12% 5% 12%;
-  display: grid;
-  max-width: 100%;
-  /* grid-gap: 2rem; */
-  grid-template-columns: repeat(auto-fit, minmax(22em, 1fr));
-}

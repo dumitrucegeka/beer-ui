@@ -18,7 +18,6 @@ const useStyles = ThemeService.createThemeStyles();
 // TODO - I shall be renamed to ShellComponent | Dashboard | Root or any other better name
 const Sidemenu = () => {
   const [open, setOpen] = useState(false);
-  const [isMultipleFilter, setIsMultipleFilter] = useState(false);
 
   const classes = useStyles();
   const theme = useTheme();
@@ -29,10 +28,6 @@ const Sidemenu = () => {
 
   const handleDrawerClose = () => {
     setOpen(false);
-  };
-
-  const handleChangeIsMultipleFilter = () => {
-    setIsMultipleFilter(!isMultipleFilter);
   };
 
   return (
@@ -92,9 +87,6 @@ const Sidemenu = () => {
         <ThemeSwitch />
         <Divider />
 
-        {/* <MultipleFilterSwitch />
-        <Divider /> */}
-
         <ListFilterComponent />
       </Drawer>
     </>
@@ -102,4 +94,3 @@ const Sidemenu = () => {
 };
 
 export default Sidemenu;
-// withRouter

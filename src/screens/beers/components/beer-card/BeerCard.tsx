@@ -55,7 +55,7 @@ const BeerCard = (props: BeerCardProps) => {
   const { card, textCenterAlignment, cardActionAreaStyle, cardActionsStyle, beerImageStyle } = useStyles();
 
   const clickHandler = useCallback(() => {
-    history.push(`/beers/${beer.id}`, { beer });
+    history.push(`/beers/${beer.id}`, { beerId: beer.id });
   }, [history, beer]);
 
   const ratingHandler = useCallback((rating: number) => {
@@ -71,7 +71,7 @@ const BeerCard = (props: BeerCardProps) => {
   return (
     <>
       <Card variant='outlined' className={card}>
-        <CardActionArea className={cardActionAreaStyle}>
+        <CardContent className={cardActionAreaStyle}>
           <CardContent>
             <Typography className={textCenterAlignment} variant='body1' color='textPrimary' gutterBottom>
               {beer.name}
@@ -85,7 +85,7 @@ const BeerCard = (props: BeerCardProps) => {
 
             <CardMedia className={beerImageStyle} component='img' alt={beer.name} image={beer.image_url} title={beer.name} onClick={clickHandler} />
           </CardContent>
-        </CardActionArea>
+        </CardContent>
 
         <CardActions className={cardActionsStyle}>
           <RatingWrapper rating={beer.rating} onChange={ratingHandler} />
