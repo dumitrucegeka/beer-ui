@@ -1,15 +1,31 @@
 import React from 'react';
-import { create } from 'react-test-renderer';
-import { Measurement } from '../../models/Measurement.interface';
+import { Typography } from '@material-ui/core';
+import { cleanup } from '@testing-library/react';
+import { create, ReactTestInstance } from 'react-test-renderer';
+import Measurement from '../../models/Measurement.interface';
 import MeasurementComponent from '../MeasurementComponent';
 
-test('Given MeasurementComponent then should render', () => {
-  const measurement: Measurement = {
-    value: 50,
-    unit: 'g',
-  };
+describe('Given MeasurementComponent ', () => {
+  let appRoot: ReactTestInstance;
 
-  const appRoot = create(<MeasurementComponent {...measurement} />).root;
+  beforeEach(() => {
+    const measurement: Measurement = {
+      value: 50,
+      unit: 'g',
+    };
 
-  expect(appRoot).toBeDefined();
+    appRoot = create(<MeasurementComponent {...measurement} />).root;
+  });
+
+  afterEach(cleanup);
+
+  test('then should render', () => {
+    expect(appRoot).toBeDefined();
+  });
+
+  test('should render unit and value', () => {
+    const elements = appRoot.findAllByType(Typography);
+
+    expect(elements.length).toBe(2);
+  });
 });

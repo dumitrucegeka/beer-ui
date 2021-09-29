@@ -33,7 +33,7 @@ const BeerList = (props: { beers: Beer[] }) => {
   return beers?.length ? (
     <div className={beerListContainerStyle}>
       {beers?.map((beer) => (
-        <BeerCard key={beer.id} beer={beer} />
+        <BeerCard key={`${beer.id}-${beer.name}`} beer={beer} />
       ))}
     </div>
   ) : (

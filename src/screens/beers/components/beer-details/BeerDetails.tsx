@@ -23,7 +23,7 @@ const BeerDetails = (props: any) => {
   const idReceived = useMemo(() => (props?.location?.state?.beerId as number) || +params.id, [props, params]);
 
   const [beerId, setBeerId] = useState(idReceived);
-  const [beer, setBeer] = useState(BeerService.createDefaultObject());
+  const [beer, setBeer] = useState(BeerService.createDefaultBeer());
 
   useEffect(() => {
     setBeerId(idReceived);
