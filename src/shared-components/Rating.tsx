@@ -3,7 +3,7 @@ import Rating from '@mui/material/Rating';
 
 const RatingWrapper = (props: { rating: number; onChange: (rating: number) => void }) => {
   const { rating, onChange } = props;
-  const [value, setValue] = useState(rating || 0);
+  const [value, setValue] = useState(+rating);
   return (
     <Rating
       name='half-rating'

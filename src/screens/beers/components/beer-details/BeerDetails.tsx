@@ -30,10 +30,13 @@ const BeerDetails = (props: any) => {
   }, [idReceived]);
 
   useEffect(() => {
-    const apiUrl = 'https://api.punkapi.com/v2/beers/';
     if (beerId) {
       BeerApiService.getById(beerId)
-        .then((result) => setBeer(result))
+        .then((result) => PersistanceService.restoreRating([result]))
+        .then((result) => {
+          console.log(result);
+          setBeer(result[0]);
+        })
         .catch((err) => history.push('/beers'));
     }
   }, [beerId]);
@@ -50,11 +53,6 @@ const BeerDetails = (props: any) => {
     const newId = beerId + 1;
     history.push(`/beers/${newId}`, { beerId: newId });
   };
-
-  function getBeerDetailDisplayValue(beerDetailKey: string): string {
-    const mapping = mappings[beerDetailKey];
-    return mapping || beerDetailKey;
-  }
 
   return (
     <div className={beerDetailsContainer}>
