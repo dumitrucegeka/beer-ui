@@ -47,6 +47,9 @@ const Beers = () => {
 
   useEffect(() => {
     const requestConfig = currentSearch ? { params: getSearchParams(currentSearch, searchCriteria) } : undefined;
+
+    // TODO: move restore calls this into an interceptor
+
     BeerApiService.getAll(requestConfig)
       .then((result) => PersistanceService.restoreRating(result))
       .then((result) => PersistanceService.restoreFavorites(result))
@@ -63,7 +66,7 @@ const Beers = () => {
         <Search onChange={handleSearch} />
         <BeerSearchCriteriaDropdown searchCriteria={searchCriteria} selectionChangeHandler={handleSelectionChange} />
       </div>
-      {isGridView ? <BeersGrid beers={FilterService.filter(beers, filterType)} /> : <BeerList beers={FilterService.filter(beers, filterType)} />}
+      {isGridView ? <BeersGrid beers={beers} /> : <BeerList beers={beers} />}
     </div>
   );
 };

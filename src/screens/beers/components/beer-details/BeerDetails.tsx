@@ -12,6 +12,7 @@ import PersistanceService from '../../../../services/PersistanceService';
 import DetailsRow from './DetailsRow';
 import styles from './BeerDetails.module.css';
 import BeerApiService from '../../../../services/BeerApiService';
+import BeerService from '../../../../services/BeerService';
 
 const BeerDetails = (props: any) => {
   const { beerDetailsContainer, imageStyle, beerDetailsSummary, beerDetailsSummaryRows, beerDetailsGeneral } = styles;
@@ -22,8 +23,7 @@ const BeerDetails = (props: any) => {
   const idReceived = useMemo(() => (props?.location?.state?.beerId as number) || +params.id, [props, params]);
 
   const [beerId, setBeerId] = useState(idReceived);
-  // TODO - method for default beer creation
-  const [beer, setBeer] = useState({ food_pairing: [], name: undefined, rating: undefined } as unknown as Beer);
+  const [beer, setBeer] = useState(BeerService.createDefaultObject());
 
   useEffect(() => {
     setBeerId(idReceived);
