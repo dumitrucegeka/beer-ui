@@ -11,7 +11,6 @@ import FoodPairing from '../food-pairing/FoodPairing';
 import Rating from '../../../../components/Rating';
 import PersistanceService from '../../../../services/PersistanceService';
 import DetailsRow from './DetailsRow';
-import FilterService from '../../../../services/FilterService';
 import styles from './BeerDetails.module.css';
 
 const BeerDetails = (props: any) => {
@@ -64,7 +63,7 @@ const BeerDetails = (props: any) => {
         <img className={imageStyle} src={beer.image_url} alt={beer.name} />
 
         <div className={beerDetailsSummaryRows}>
-          <DetailsRow propertyName='name' propertyValue={beer.name} />
+          <DetailsRow propertyName='name' propertyValue={beer.name} bordered={false} />
 
           <FoodPairing pairings={[...beer.food_pairing]} />
 
@@ -86,7 +85,7 @@ const BeerDetails = (props: any) => {
             return;
           }
 
-          return <DetailsRow key={`${index.toString() + beer?.name}`} propertyName={beerDetail} propertyValue={beer[beerDetail as keyof Beer]} />;
+          return <DetailsRow key={`${index.toString() + beer?.name}`} propertyName={beerDetail} propertyValue={beer[beerDetail as keyof Beer]} bordered />;
         })}
       </div>
     </div>

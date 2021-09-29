@@ -5,7 +5,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import clsx from 'clsx';
 
-import { BrowserRouter as Router, Route, Switch as BrowserSwitch, useHistory, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch as BrowserSwitch } from 'react-router-dom';
 import Beers from '../screens/beers/Beers';
 import BeerDetails from '../screens/beers/components/beer-details/BeerDetails';
 import DisplayTypeSwitch from './DisplayTypeSwitch';
