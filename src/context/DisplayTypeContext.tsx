@@ -1,13 +1,11 @@
 import React, { createContext } from 'react';
+import DisplayType from '../models/DisplayType.enum';
 
-export enum DisplayType {
-  LIST = 'LIST',
-  GRID = 'GRID',
-}
-
-export const DisplayTypeContext = createContext({
+const DisplayTypeContext = createContext({
   displayType: DisplayType.LIST,
   toggleDisplayType: () => {},
 });
 
 DisplayTypeContext.displayName = 'DisplayTypeContext';
+
+export default DisplayTypeContext;

@@ -1,5 +1,5 @@
-import { FilterType } from '../context/ListFilterContext';
-import { Beer } from '../models/Beer.interface';
+import Beer from '../models/Beer.interface';
+import FilterType from '../models/FilterType.enum';
 
 const FilterService = {
   filter(allBeers: Beer[], filterType: FilterType): Beer[] {

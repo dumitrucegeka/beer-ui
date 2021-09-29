@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowBackForward from '@material-ui/icons/ArrowForward';
 
-import { Beer } from '../../../../models/Beer.interface';
+import Beer from '../../../../models/Beer.interface';
 import mappings from '../../../../models/BeerDetailsKeyMappings';
 import FoodPairing from '../food-pairing/FoodPairing';
 import Rating from '../../../../shared-components/Rating';
@@ -30,7 +30,6 @@ const BeerDetails = (props: any) => {
   }, [idReceived]);
 
   useEffect(() => {
-    const apiUrl = 'https://api.punkapi.com/v2/beers/';
     if (beerId) {
       BeerApiService.getById(beerId)
         .then((result) => setBeer(result))
@@ -46,10 +45,10 @@ const BeerDetails = (props: any) => {
     history.push(`/beers/${id}`, { beerId: id });
   }, [beerId, history]);
 
-  const goForward = () => {
+  const goForward = useCallback(() => {
     const newId = beerId + 1;
     history.push(`/beers/${newId}`, { beerId: newId });
-  };
+  }, [beerId, history]);
 
   function getBeerDetailDisplayValue(beerDetailKey: string): string {
     const mapping = mappings[beerDetailKey];
@@ -64,7 +63,7 @@ const BeerDetails = (props: any) => {
         <img className={imageStyle} src={beer.image_url} alt={beer.name} />
 
         <div className={beerDetailsSummaryRows}>
-          <DetailsRow propertyName='name' propertyValue={beer.name} bordered={false} />
+          <DetailsRow propertyName='name' propertyValue={beer.name} styleClasses={{ border: false, padding: false }} />
 
           <FoodPairing pairings={[...beer.food_pairing]} />
 
@@ -77,7 +76,7 @@ const BeerDetails = (props: any) => {
           />
         </div>
 
-        <ArrowBackForward onClick={() => goForward()} />
+        <ArrowBackForward onClick={goForward} />
       </div>
 
       <div className={beerDetailsGeneral}>
@@ -86,7 +85,7 @@ const BeerDetails = (props: any) => {
             return;
           }
 
-          return <DetailsRow key={`${index.toString() + beer?.name}`} propertyName={beerDetail} propertyValue={beer[beerDetail as keyof Beer]} bordered />;
+          return <DetailsRow key={`${index.toString() + beer?.name}`} propertyName={beerDetail} propertyValue={beer[beerDetail as keyof Beer]} />;
         })}
       </div>
     </div>

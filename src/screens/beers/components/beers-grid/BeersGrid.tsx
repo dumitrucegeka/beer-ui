@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Beer } from '../../../../models/Beer.interface';
+import Beer from '../../../../models/Beer.interface';
 import styles from './BeersGrid.module.css';
 import useBeerColumns from './useBeerColumns';
 import useGrid from './useDataGrid';

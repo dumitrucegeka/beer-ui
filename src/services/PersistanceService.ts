@@ -1,4 +1,4 @@
-import { Beer } from '../models/Beer.interface';
+import Beer from '../models/Beer.interface';
 
 enum StorageKey {
   RATED_BEERS = 'rated-beers',

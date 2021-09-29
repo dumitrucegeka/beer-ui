@@ -15,7 +15,7 @@ const BeerSearchCriteriaDropdown = (props: BeerSearchCriteriaProps) => {
 
   return (
     <FormControl className={formControl}>
-      <InputLabel id='demo-simple-select-error-label'>Search for </InputLabel>
+      <InputLabel id='demo-simple-select-error-label'>Filter on </InputLabel>
       <Select
         className={selectStyle}
         labelId='demo-simple-select-error-label'

@@ -2,7 +2,7 @@ import Measurement from './Measurement.interface';
 import { Ingredients } from './Ingredient.interface';
 import { BrewingMethod } from './BrewingMethod.interface';
 
-export interface Beer {
+interface Beer {
   id: number;
   name: string;
   tagline: string;
@@ -27,3 +27,5 @@ export interface Beer {
   rating: number;
   favourite: boolean;
 }
+
+export default Beer;

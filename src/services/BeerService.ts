@@ -1,4 +1,4 @@
-import { Beer } from '../models/Beer.interface';
+import Beer from '../models/Beer.interface';
 import Measurement from '../models/Measurement.interface';
 import { BrewingMethod } from '../models/BrewingMethod.interface';
 import { Ingredients } from '../models/Ingredient.interface';

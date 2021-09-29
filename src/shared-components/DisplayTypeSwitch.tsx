@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { FormControlLabel, Switch } from '@material-ui/core';
-import { DisplayType, DisplayTypeContext } from '../context/DisplayTypeContext';
+import DisplayTypeContext from '../context/DisplayTypeContext';
+import DisplayType from '../models/DisplayType.enum';
 
 const DisplayTypeSwitch = () => {
   const { displayType, toggleDisplayType } = useContext(DisplayTypeContext);
