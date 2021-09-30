@@ -1,15 +1,15 @@
-import { Beer } from '../models/Beer.interface';
+import Beer from '../models/Beer.interface';
 import Measurement from '../models/Measurement.interface';
 import { BrewingMethod } from '../models/BrewingMethod.interface';
 import { Ingredients } from '../models/Ingredient.interface';
 
 const BeerService = {
-  createDefaultObject(): Beer {
+  createDefaultBeer(id = -1, name = ''): Beer {
     return {
-      id: -1,
+      id,
       tagline: '',
       food_pairing: [],
-      name: '',
+      name,
       rating: 0,
       first_brewed: '',
       favourite: false,

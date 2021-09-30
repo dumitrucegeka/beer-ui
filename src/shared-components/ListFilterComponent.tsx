@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
-import { createStyles, ListItem, ListItemIcon, ListItemText, makeStyles, Theme } from '@material-ui/core';
-import List from '@material-ui/core/List';
+import React, { useCallback, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { createStyles, List, ListItem, ListItemIcon, ListItemText, makeStyles, Theme } from '@material-ui/core';
 import { Favorite, StarRate, ViewHeadline } from '@material-ui/icons';
-import { FilterType, ListFilterContext } from '../context/ListFilterContext';
+import ListFilterContext from '../context/ListFilterContext';
+import FilterType from '../models/FilterType.enum';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,10 +19,20 @@ const useStyles = makeStyles((theme: Theme) =>
 const ListFilterComponent = () => {
   const { filterType, changeFilterType } = useContext(ListFilterContext);
   const { active, inactive } = useStyles();
+  const history = useHistory();
+
+  const onFilter = useCallback(
+    (event: any) => {
+      const filtersType = event;
+      changeFilterType(filtersType as FilterType);
+      history.push('/beers');
+    },
+    [history, changeFilterType]
+  );
 
   return (
     <List>
-      <ListItem className={filterType === FilterType.ALL ? active : inactive} button key='All' onClick={() => changeFilterType(FilterType.ALL)}>
+      <ListItem className={filterType === FilterType.ALL ? active : inactive} button key='All' onClick={() => onFilter(FilterType.ALL)}>
         <ListItemIcon>
           <ViewHeadline />
         </ListItemIcon>
@@ -29,12 +40,7 @@ const ListFilterComponent = () => {
         <ListItemText primary='See All' />
       </ListItem>
 
-      <ListItem
-        className={filterType === FilterType.FAVORITES ? active : inactive}
-        button
-        key='My favourites'
-        onClick={() => changeFilterType(FilterType.FAVORITES)}
-      >
+      <ListItem className={filterType === FilterType.FAVORITES ? active : inactive} button key='My favourites' onClick={() => onFilter(FilterType.FAVORITES)}>
         <ListItemIcon>
           <Favorite />
         </ListItemIcon>
@@ -42,7 +48,7 @@ const ListFilterComponent = () => {
         <ListItemText primary='My favourites' />
       </ListItem>
 
-      <ListItem className={filterType === FilterType.RATED ? active : inactive} button key='My rated beers' onClick={() => changeFilterType(FilterType.RATED)}>
+      <ListItem className={filterType === FilterType.RATED ? active : inactive} button key='My rated beers' onClick={() => onFilter(FilterType.RATED)}>
         <ListItemIcon>
           <StarRate />
         </ListItemIcon>

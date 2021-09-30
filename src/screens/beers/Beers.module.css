@@ -1,8 +1,8 @@
 .searchContainerStyle {
-  gap: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
+  margin: 1% 1% 0rem 0rem;
+  display: grid;
   justify-content: center;
-  margin-bottom: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 0.2fr));
+  column-gap: 2rem;
+  row-gap: 2rem;
 }

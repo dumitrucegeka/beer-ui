@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Divider, Tooltip, Typography } from '@material-ui/core';
 import { BrewingMethod, BrewingMethods, BrewingMethodType } from '../models/BrewingMethod.interface';
@@ -27,10 +27,10 @@ const BrewingMethodsComponent = (methods: BrewingMethods) => {
           <>
             <Typography variant='subtitle1'> {brewingMethodType} </Typography>
             {(entry[1] as string)?.split(',').map((step: string) => (
-              <>
+              <Fragment key={step}>
                 <Typography variant='caption'> {step} </Typography>
                 <Divider />
-              </>
+              </Fragment>
             ))}
           </>
         );

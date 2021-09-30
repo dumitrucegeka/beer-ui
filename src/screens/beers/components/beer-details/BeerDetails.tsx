@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowBackForward from '@material-ui/icons/ArrowForward';
 
-import { Beer } from '../../../../models/Beer.interface';
+import Beer from '../../../../models/Beer.interface';
 import FoodPairing from '../food-pairing/FoodPairing';
 import Rating from '../../../../shared-components/Rating';
 import PersistanceService from '../../../../services/PersistanceService';
@@ -22,7 +22,7 @@ const BeerDetails = (props: any) => {
   const idReceived = useMemo(() => (props?.location?.state?.beerId as number) || +params.id, [props, params]);
 
   const [beerId, setBeerId] = useState(idReceived);
-  const [beer, setBeer] = useState(BeerService.createDefaultObject());
+  const [beer, setBeer] = useState(BeerService.createDefaultBeer());
 
   useEffect(() => {
     setBeerId(idReceived);
@@ -45,10 +45,10 @@ const BeerDetails = (props: any) => {
     history.push(`/beers/${id}`, { beerId: id });
   }, [beerId, history]);
 
-  const goForward = () => {
+  const goForward = useCallback(() => {
     const newId = beerId + 1;
     history.push(`/beers/${newId}`, { beerId: newId });
-  };
+  }, [beerId, history]);
 
   return (
     <div className={beerDetailsContainer}>
@@ -58,7 +58,7 @@ const BeerDetails = (props: any) => {
         <img className={imageStyle} src={beer.image_url} alt={beer.name} />
 
         <div className={beerDetailsSummaryRows}>
-          <DetailsRow propertyName='name' propertyValue={beer.name} bordered={false} />
+          <DetailsRow propertyName='name' propertyValue={beer.name} styleClasses={{ border: false, padding: false }} />
 
           <FoodPairing pairings={[...beer.food_pairing]} />
 
@@ -71,7 +71,7 @@ const BeerDetails = (props: any) => {
           />
         </div>
 
-        <ArrowBackForward onClick={() => goForward()} />
+        <ArrowBackForward onClick={goForward} />
       </div>
 
       <div className={beerDetailsGeneral}>
@@ -80,7 +80,7 @@ const BeerDetails = (props: any) => {
             return;
           }
 
-          return <DetailsRow key={`${index.toString() + beer?.name}`} propertyName={beerDetail} propertyValue={beer[beerDetail as keyof Beer]} bordered />;
+          return <DetailsRow key={`${index.toString() + beer?.name || ''}`} propertyName={beerDetail} propertyValue={beer[beerDetail as keyof Beer]} />;
         })}
       </div>
     </div>

@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import { ToastContainer } from 'react-toastify';
-import { DisplayType, DisplayTypeContext } from './context/DisplayTypeContext';
 import SideMenuWrapper from './shared-components/SideMenuWrapper';
-import { FilterType, ListFilterContext } from './context/ListFilterContext';
 import ThemeService from './services/ThemeService';
+import DisplayTypeContext from './context/DisplayTypeContext';
 import ThemeContext from './context/ThemeContext';
-import 'react-toastify/dist/ReactToastify.css';
+import ListFilterContext from './context/ListFilterContext';
+import DisplayType from './models/DisplayType.enum';
+import FilterType from './models/FilterType.enum';
 
 const App = () => {
   const displayTypeContext = useContext(DisplayTypeContext);
@@ -40,9 +43,11 @@ const App = () => {
       <ThemeProvider theme={currentTheme}>
         <DisplayTypeContext.Provider value={{ displayType, toggleDisplayType }}>
           <ListFilterContext.Provider value={{ filterType, changeFilterType }}>
-            <CssBaseline />
-            <SideMenuWrapper />
-            <ToastContainer />
+            <Router basename={process.env.PUBLIC_URL}>
+              <CssBaseline />
+              <SideMenuWrapper />
+              <ToastContainer />
+            </Router>
           </ListFilterContext.Provider>
         </DisplayTypeContext.Provider>
       </ThemeProvider>

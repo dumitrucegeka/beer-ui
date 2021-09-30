@@ -8,8 +8,16 @@ interface FoodPairingProps {
 
 const FoodPairing = (props: FoodPairingProps) => {
   const { pairings } = props;
+  const value = pairings.join(', ');
+  const detailProps = {
+    propertyName: 'Food Pairing',
+    propertyValue: value,
+    styleClasses: {
+      border: false,
+    },
+  };
 
-  return pairings?.length ? <DetailsRow propertyName='Food Pairing:' propertyValue={pairings.join(', ')} bordered={false} /> : null;
+  return pairings?.length ? <DetailsRow {...detailProps} /> : <></>;
 };
 
 export default FoodPairing;

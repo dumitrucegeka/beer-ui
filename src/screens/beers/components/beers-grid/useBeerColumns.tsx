@@ -134,9 +134,6 @@ const useBeerColumns = (openDetailsHandler: (beerId: string) => void) => {
       width: 150,
       editable: false,
       renderCell: renderMeasurement,
-      // valueGetter: (params: GridValueGetterParams) => {
-      //   return `${params.getValue(params.id, 'volume') || ''} ${params.getValue(params.id, 'volume') || ''}` as GridCellValue;
-      // },
     },
     {
       field: 'boil_volume',

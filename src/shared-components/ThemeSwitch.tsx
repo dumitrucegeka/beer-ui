@@ -5,7 +5,7 @@ import ThemeContext from '../context/ThemeContext';
 const ThemeSwitch = () => {
   const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
 
-  return <FormControlLabel control={<Switch checked={isDarkTheme} onChange={toggleTheme} color='primary' />} label='Dark Mode' />;
+  return <FormControlLabel control={<Switch checked={isDarkTheme} onChange={toggleTheme} role='switch' color='primary' />} label='Dark Mode' />;
 };
 
 export default ThemeSwitch;

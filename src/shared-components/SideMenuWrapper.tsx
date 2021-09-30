@@ -38,7 +38,7 @@ const SideMenuWrapper = () => {
         })}
       >
         <Toolbar>
-          <Typography variant='h6' noWrap align='center' className={classes.title}>
+          <Typography variant='h6' noWrap align='center' color='textPrimary' className={classes.title}>
             Explore the finest beers!
           </Typography>
 
@@ -53,13 +53,11 @@ const SideMenuWrapper = () => {
           [classes.contentShift]: open,
         })}
       >
-        <Router basename={process.env.PUBLIC_URL}>
-          <BrowserSwitch>
-            <Route exact path='/' component={Beers} />
-            <Route exact path='/beers' component={Beers} />
-            <Route exact path='/beers/:id' component={BeerDetails} />
-          </BrowserSwitch>
-        </Router>
+        <BrowserSwitch>
+          <Route exact path='/' component={Beers} />
+          <Route exact path='/beers' component={Beers} />
+          <Route exact path='/beers/:id' component={BeerDetails} />
+        </BrowserSwitch>
       </main>
 
       <Drawer

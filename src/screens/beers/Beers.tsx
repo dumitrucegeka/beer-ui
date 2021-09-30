@@ -1,17 +1,18 @@
 import React, { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Search from '../../shared-components/Search';
-import { Beer } from '../../models/Beer.interface';
+import Beer from '../../models/Beer.interface';
 import BeerSearchCriteria from '../../models/BeerSearchCriteria.enum';
 import styles from './Beers.module.css';
 import BeerList from './components/beer-list/BeerList';
 import BeerSearchCriteriaDropdown from './components/beer-search-criteria-dropdown/BeerSearchCriteriaDropdown';
 import BeersGrid from './components/beers-grid/BeersGrid';
-import { DisplayType, DisplayTypeContext } from '../../context/DisplayTypeContext';
-import { ListFilterContext } from '../../context/ListFilterContext';
+import ListFilterContext from '../../context/ListFilterContext';
+import DisplayTypeContext from '../../context/DisplayTypeContext';
 import PersistanceService from '../../services/PersistanceService';
 import FilterService from '../../services/FilterService';
 import BeerApiService from '../../services/BeerApiService';
+import DisplayType from '../../models/DisplayType.enum';
 
 const Beers = () => {
   const { searchContainerStyle } = styles;
@@ -47,6 +48,7 @@ const Beers = () => {
 
   useEffect(() => {
     const requestConfig = currentSearch ? { params: getSearchParams(currentSearch, searchCriteria) } : undefined;
+
     BeerApiService.getAll(requestConfig)
       .then((result) => PersistanceService.restoreRating(result))
       .then((result) => PersistanceService.restoreFavorites(result))
@@ -63,6 +65,7 @@ const Beers = () => {
         <Search onChange={handleSearch} />
         <BeerSearchCriteriaDropdown searchCriteria={searchCriteria} selectionChangeHandler={handleSelectionChange} />
       </div>
+
       {isGridView ? <BeersGrid beers={beers} /> : <BeerList beers={beers} />}
     </div>
   );

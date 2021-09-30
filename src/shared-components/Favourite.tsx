@@ -5,12 +5,13 @@ import { IconButton } from '@material-ui/core';
 const FavouriteWrapper = (props: { isFavourite: boolean; onChange: (isFavourite: boolean) => void }) => {
   const { isFavourite, onChange } = props;
   const [favourite, setFavourite] = useState(isFavourite);
+
   const clickCallback = (): void => {
     setFavourite(!favourite);
     onChange(!favourite);
   };
 
-  return <IconButton onClick={clickCallback}>{favourite ? <Favorite /> : <FavoriteBorder />}</IconButton>;
+  return <IconButton onClick={clickCallback}>{favourite ? <Favorite color='primary' /> : <FavoriteBorder />}</IconButton>;
 };
 
 export default FavouriteWrapper;
