@@ -37,7 +37,6 @@ const DetailsRow = (props: { propertyName: string; propertyValue: any; styleClas
   const { beerDetailContainer, withBorder, withoutBorder, withPadding, withoutPadding } = useStyles();
   const { propertyName, propertyValue, styleClasses } = props;
   const borderStyle = styleClasses?.border ? withBorder : withoutBorder;
-  // const paddingStyle = styleClasses?.padding ? withPadding : withoutPadding;
   const theme = useTheme();
 
   return (

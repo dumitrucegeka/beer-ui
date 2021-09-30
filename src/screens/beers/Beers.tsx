@@ -49,8 +49,6 @@ const Beers = () => {
   useEffect(() => {
     const requestConfig = currentSearch ? { params: getSearchParams(currentSearch, searchCriteria) } : undefined;
 
-    // TODO: move restore calls this into an interceptor
-
     BeerApiService.getAll(requestConfig)
       .then((result) => PersistanceService.restoreRating(result))
       .then((result) => PersistanceService.restoreFavorites(result))

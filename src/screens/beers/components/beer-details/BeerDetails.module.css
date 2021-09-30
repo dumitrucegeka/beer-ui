@@ -8,13 +8,10 @@
 .beerDetailsSummary {
   margin: 0 auto 2rem auto;
   width: 60%;
-  /* min-height: 93ex; 
-  TODO - This should work for all but it pushes other details too low for beers with not many food pairings */
   min-height: 70ex;
   display: flex;
   gap: 20%;
   align-items: center;
-
 }
 
 .beerDetailsGeneral {
