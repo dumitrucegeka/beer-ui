@@ -80,7 +80,7 @@ const BeerDetails = (props: any) => {
             return;
           }
 
-          return <DetailsRow key={`${index.toString() + beer?.name}`} propertyName={beerDetail} propertyValue={beer[beerDetail as keyof Beer]} />;
+          return <DetailsRow key={`${index.toString() + beer?.name || ''}`} propertyName={beerDetail} propertyValue={beer[beerDetail as keyof Beer]} />;
         })}
       </div>
     </div>
