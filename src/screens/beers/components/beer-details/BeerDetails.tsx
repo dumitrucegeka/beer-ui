@@ -5,7 +5,6 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowBackForward from '@material-ui/icons/ArrowForward';
 
 import { Beer } from '../../../../models/Beer.interface';
-import mappings from '../../../../models/BeerDetailsKeyMappings';
 import FoodPairing from '../food-pairing/FoodPairing';
 import Rating from '../../../../shared-components/Rating';
 import PersistanceService from '../../../../services/PersistanceService';
@@ -33,10 +32,7 @@ const BeerDetails = (props: any) => {
     if (beerId) {
       BeerApiService.getById(beerId)
         .then((result) => PersistanceService.restoreRating([result]))
-        .then((result) => {
-          console.log(result);
-          setBeer(result[0]);
-        })
+        .then((result) => setBeer(result[0]))
         .catch((err) => history.push('/beers'));
     }
   }, [beerId]);
