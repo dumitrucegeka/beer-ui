@@ -5,7 +5,6 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowBackForward from '@material-ui/icons/ArrowForward';
 
 import Beer from '../../../../models/Beer.interface';
-import mappings from '../../../../models/BeerDetailsKeyMappings';
 import FoodPairing from '../food-pairing/FoodPairing';
 import Rating from '../../../../shared-components/Rating';
 import PersistanceService from '../../../../services/PersistanceService';
@@ -32,7 +31,8 @@ const BeerDetails = (props: any) => {
   useEffect(() => {
     if (beerId) {
       BeerApiService.getById(beerId)
-        .then((result) => setBeer(result))
+        .then((result) => PersistanceService.restoreRating([result]))
+        .then((result) => setBeer(result[0]))
         .catch((err) => history.push('/beers'));
     }
   }, [beerId]);
@@ -49,11 +49,6 @@ const BeerDetails = (props: any) => {
     const newId = beerId + 1;
     history.push(`/beers/${newId}`, { beerId: newId });
   }, [beerId, history]);
-
-  function getBeerDetailDisplayValue(beerDetailKey: string): string {
-    const mapping = mappings[beerDetailKey];
-    return mapping || beerDetailKey;
-  }
 
   return (
     <div className={beerDetailsContainer}>
